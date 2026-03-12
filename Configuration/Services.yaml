@@ -1,0 +1,95 @@
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+    public: false
+
+  Maispace\Make\:
+    resource: '../Classes/*'
+
+  Maispace\Make\PackageResolver:
+    public: true
+
+  Maispace\Make\Command\Component\BackendControllerCommand:
+    tags:
+      - name: 'console.command'
+        command: 'make:backendcontroller'
+        description: 'Create a backend controller'
+        schedulable: false
+
+  Maispace\Make\Command\Component\CommandCommand:
+    tags:
+      - name: 'console.command'
+        command: 'make:command'
+        description: 'Create a console command'
+        schedulable: false
+
+  Maispace\Make\Command\Component\ControllerCommand:
+    tags:
+      - name: 'console.command'
+        command: 'make:controller'
+        description: 'Create an Extbase action controller'
+        schedulable: false
+
+  Maispace\Make\Command\Component\EventCommand:
+    tags:
+      - name: 'console.command'
+        command: 'make:event'
+        description: 'Create a PSR-14 event class'
+        schedulable: false
+
+  Maispace\Make\Command\Component\EventListenerCommand:
+    tags:
+      - name: 'console.command'
+        command: 'make:eventlistener'
+        description: 'Create a PSR-14 event listener'
+        schedulable: false
+
+  Maispace\Make\Command\Component\ExceptionCommand:
+    tags:
+      - name: 'console.command'
+        command: 'make:exception'
+        description: 'Create a PHP exception class'
+        schedulable: false
+
+  Maispace\Make\Command\Component\MigrationCommand:
+    tags:
+      - name: 'console.command'
+        command: 'make:migration'
+        description: 'Create a data migration class'
+        schedulable: false
+
+  Maispace\Make\Command\Component\MiddlewareCommand:
+    tags:
+      - name: 'console.command'
+        command: 'make:middleware'
+        description: 'Create a PSR-15 middleware'
+        schedulable: false
+
+  Maispace\Make\Command\Component\ServiceCommand:
+    tags:
+      - name: 'console.command'
+        command: 'make:service'
+        description: 'Create a service class'
+        schedulable: false
+
+  Maispace\Make\Command\Component\TraitCommand:
+    tags:
+      - name: 'console.command'
+        command: 'make:trait'
+        description: 'Create a PHP trait'
+        schedulable: false
+
+  Maispace\Make\Command\Component\UpgradeWizardCommand:
+    tags:
+      - name: 'console.command'
+        command: 'make:upgradewizard'
+        description: 'Create a TYPO3 upgrade wizard'
+        schedulable: false
+
+  Maispace\Make\Command\Component\ViewHelperCommand:
+    tags:
+      - name: 'console.command'
+        command: 'make:viewhelper'
+        description: 'Create a Fluid ViewHelper'
+        schedulable: false

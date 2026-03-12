@@ -1,0 +1,60 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Maispace\Make\Command\Component;
+
+use Maispace\Make\Component\ComponentInterface;
+use Maispace\Make\Component\Controller;
+use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Output\OutputInterface;
+
+/**
+ * Command for creating a new Extbase controller component
+ */
+class ControllerCommand extends SimpleComponentCommand
+{
+    protected function configure(): void
+    {
+        parent::configure();
+        $this->setDescription('Create an Extbase action controller');
+    }
+
+    protected function initialize(InputInterface $input, OutputInterface $output): void
+    {
+        parent::initialize($input, $output);
+    }
+
+    protected function createComponent(): ComponentInterface
+    {
+        $controller = new Controller($this->psr4Prefix);
+
+        return $controller
+            ->setName(
+                (string)$this->io->ask(
+                    'Enter the name of the controller (e.g. "BlogController")',
+                    null,
+                    [$this, 'answerRequired']
+                )
+            )
+            ->setDirectory(
+                (string)$this->io->ask(
+                    'Enter the directory, the controller should be placed in',
+                    $this->getProposalFromEnvironment('CONTROLLER_DIR', 'Controller')
+                )
+            )
+            ->setActionName(
+                (string)$this->io->ask(
+                    'Enter the name of the first action (e.g. "index")',
+                    $this->getProposalFromEnvironment('CONTROLLER_ACTION', 'index')
+                )
+            );
+    }
+
+    protected function publishComponentConfiguration(ComponentInterface $component): bool
+    {
+        $this->io->success('Successfully created the controller ' . $component->getName() . '.');
+
+        return true;
+    }
+}
