@@ -11,7 +11,7 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
 /**
- * Command for creating a new backend controller component
+ * Command for creating a new backend controller component.
  */
 class BackendControllerCommand extends SimpleComponentCommand
 {
@@ -65,6 +65,7 @@ class BackendControllerCommand extends SimpleComponentCommand
 
     /**
      * @param BackendController $component
+     *
      * @throws AbortCommandException
      */
     protected function publishComponentConfiguration(ComponentInterface $component): bool

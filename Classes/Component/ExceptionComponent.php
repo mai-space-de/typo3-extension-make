@@ -5,7 +5,7 @@ declare(strict_types = 1);
 namespace Maispace\Make\Component;
 
 /**
- * Exception component (generates a PHP exception class)
+ * Exception component (generates a PHP exception class).
  */
 class ExceptionComponent extends AbstractComponent
 {

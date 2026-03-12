@@ -8,7 +8,7 @@ use TYPO3\CMS\Core\Utility\ArrayUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 /**
- * IO operations for the array configurations of an extension
+ * IO operations for the array configurations of an extension.
  */
 class ArrayConfiguration extends AbstractConfiguration
 {
@@ -23,7 +23,7 @@ class ArrayConfiguration extends AbstractConfiguration
     }
 
     /**
-     * Write / update the array configuration
+     * Write / update the array configuration.
      *
      * @return bool Whether the array configuration was updated successfully
      */
@@ -39,7 +39,7 @@ class ArrayConfiguration extends AbstractConfiguration
     }
 
     /**
-     * Load the array configuration
+     * Load the array configuration.
      *
      * @return array<string, mixed>
      */
@@ -51,6 +51,7 @@ class ArrayConfiguration extends AbstractConfiguration
         }
         $configuration = require $configurationFile;
 
+        /** @var array<string, mixed> $configuration */
         return is_array($configuration) ? $configuration : [];
     }
 }

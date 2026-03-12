@@ -12,7 +12,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 /**
- * Command for creating a new middleware component
+ * Command for creating a new middleware component.
  */
 class MiddlewareCommand extends SimpleComponentCommand
 {
@@ -77,6 +77,7 @@ class MiddlewareCommand extends SimpleComponentCommand
 
     /**
      * @param Middleware $component
+     *
      * @throws AbortCommandException
      */
     protected function publishComponentConfiguration(ComponentInterface $component): bool

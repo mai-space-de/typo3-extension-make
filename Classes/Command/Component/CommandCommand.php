@@ -11,7 +11,7 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
 /**
- * Command for creating a new console command component
+ * Command for creating a new console command component.
  */
 class CommandCommand extends SimpleComponentCommand
 {
@@ -65,6 +65,7 @@ class CommandCommand extends SimpleComponentCommand
 
     /**
      * @param Command $component
+     *
      * @throws AbortCommandException
      */
     protected function publishComponentConfiguration(ComponentInterface $component): bool

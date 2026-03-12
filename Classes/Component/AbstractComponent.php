@@ -5,7 +5,7 @@ declare(strict_types = 1);
 namespace Maispace\Make\Component;
 
 /**
- * Abstract class for components
+ * Abstract class for components.
  */
 abstract class AbstractComponent implements ComponentInterface
 {

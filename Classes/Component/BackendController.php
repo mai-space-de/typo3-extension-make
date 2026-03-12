@@ -5,7 +5,7 @@ declare(strict_types = 1);
 namespace Maispace\Make\Component;
 
 /**
- * Backend controller component
+ * Backend controller component.
  */
 class BackendController extends AbstractComponent implements ArrayConfigurationComponentInterface, ServiceConfigurationComponentInterface
 {

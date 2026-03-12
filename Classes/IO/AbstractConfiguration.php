@@ -5,11 +5,12 @@ declare(strict_types = 1);
 namespace Maispace\Make\IO;
 
 /**
- * Abstract for configuration classes, performing IO operations
+ * Abstract for configuration classes, performing IO operations.
  */
 abstract class AbstractConfiguration implements ConfigurationInterface
 {
     protected string $packagePath = '';
+
     /** @var array<string, mixed> */
     protected array $configuration = [];
 

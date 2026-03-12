@@ -5,7 +5,7 @@ declare(strict_types = 1);
 namespace Maispace\Make\Component;
 
 /**
- * Database migration component
+ * Database migration component.
  */
 class Migration extends AbstractComponent
 {

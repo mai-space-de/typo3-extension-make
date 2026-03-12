@@ -11,7 +11,7 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
 /**
- * Command for creating a new upgrade wizard component
+ * Command for creating a new upgrade wizard component.
  */
 class UpgradeWizardCommand extends SimpleComponentCommand
 {
@@ -61,6 +61,7 @@ class UpgradeWizardCommand extends SimpleComponentCommand
 
     /**
      * @param UpgradeWizard $component
+     *
      * @throws AbortCommandException
      */
     protected function publishComponentConfiguration(ComponentInterface $component): bool
