@@ -1,0 +1,12 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Maispace\Make\Exception;
+
+/**
+ * Exception thrown when an invalid package name is provided
+ */
+class InvalidPackageNameException extends \RuntimeException
+{
+}
