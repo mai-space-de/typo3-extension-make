@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types=1);
+declare(strict_types = 1);
 
 namespace Maispace\Make\Component;
 
@@ -66,6 +66,7 @@ class Command extends AbstractComponent implements ServiceConfigurationComponent
         );
     }
 
+    /** @return array<string, mixed> */
     public function getServiceConfiguration(): array
     {
         return [

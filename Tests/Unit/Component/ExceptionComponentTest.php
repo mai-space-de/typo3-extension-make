@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types=1);
+declare(strict_types = 1);
 
 namespace Maispace\Make\Tests\Unit\Component;
 
@@ -26,17 +26,17 @@ class ExceptionComponentTest extends TestCase
     public function generateExceptionFileContentTest(): void
     {
         $expectedFileContent = <<<'EOF'
-<?php
+            <?php
 
-declare(strict_types=1);
+            declare(strict_types=1);
 
-namespace Vendor\Extension\Exception;
+            namespace Vendor\Extension\Exception;
 
-class InvalidArgumentException extends \RuntimeException
-{
-}
+            class InvalidArgumentException extends \RuntimeException
+            {
+            }
 
-EOF;
+            EOF;
 
         self::assertEquals($expectedFileContent, $this->subject->__toString());
     }

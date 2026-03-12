@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types=1);
+declare(strict_types = 1);
 
 namespace Maispace\Make\IO;
 
@@ -40,6 +40,8 @@ class ArrayConfiguration extends AbstractConfiguration
 
     /**
      * Load the array configuration
+     *
+     * @return array<string, mixed>
      */
     protected function load(): array
     {

@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types=1);
+declare(strict_types = 1);
 
 namespace Maispace\Make\Command\Component;
 
@@ -31,14 +31,14 @@ class EventCommand extends SimpleComponentCommand
 
         return $event
             ->setName(
-                (string)$this->io->ask(
+                $this->askString(
                     'Enter the name of the event (e.g. "UserRegisteredEvent")',
                     null,
                     [$this, 'answerRequired']
                 )
             )
             ->setDirectory(
-                (string)$this->io->ask(
+                $this->askString(
                     'Enter the directory, the event should be placed in',
                     $this->getProposalFromEnvironment('EVENT_DIR', 'Event')
                 )

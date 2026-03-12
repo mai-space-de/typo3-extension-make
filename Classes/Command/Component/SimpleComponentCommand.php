@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types=1);
+declare(strict_types = 1);
 
 namespace Maispace\Make\Command\Component;
 
@@ -23,7 +23,7 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
 abstract class SimpleComponentCommand extends AbstractCommand
 {
     protected string $extensionKey = '';
-    protected PackageInterface $package;
+    protected ?PackageInterface $package = null;
     protected string $psr4Prefix = '';
     protected ServiceConfiguration $serviceConfiguration;
     protected ArrayConfiguration $arrayConfiguration;
@@ -112,12 +112,17 @@ abstract class SimpleComponentCommand extends AbstractCommand
 
     protected function getPsr4Prefix(PackageInterface $package): string
     {
-        return (string)key((array)($package->getValueFromComposerManifest('autoload')->{'psr-4'} ?? []));
+        $autoload = $package->getValueFromComposerManifest('autoload');
+        $psr4 = is_object($autoload) ? ($autoload->{'psr-4'} ?? []) : [];
+
+        return (string)key((array)$psr4);
     }
 
     protected function getExtensionClassesPath(PackageInterface $package, string $psr4Prefix): string
     {
-        $classesPath = (string)($package->getValueFromComposerManifest('autoload')->{'psr-4'}->{$psr4Prefix} ?? '');
+        $autoload = $package->getValueFromComposerManifest('autoload');
+        $psr4 = is_object($autoload) ? ($autoload->{'psr-4'} ?? null) : null;
+        $classesPath = (is_object($psr4) && isset($psr4->{$psr4Prefix})) ? (string)$psr4->{$psr4Prefix} : '';
 
         return $classesPath ? (trim($classesPath, '/') . '/') : '';
     }
@@ -151,14 +156,16 @@ abstract class SimpleComponentCommand extends AbstractCommand
             return false;
         }
 
-        if (isset($configuration['services'][$component->getClassName()])
+        $services = is_array($configuration['services']) ? $configuration['services'] : [];
+
+        if (isset($services[$component->getClassName()])
             && !$this->io->confirm('A service configuration for ' . $component->getClassName() . ' already exists. Do you want to override it?', true)
         ) {
             throw new AbortCommandException('Aborting component generation.', 1639664758);
         }
 
         $configuration['services'] = array_replace_recursive(
-            $configuration['services'],
+            $services,
             $component->getServiceConfiguration()
         );
 

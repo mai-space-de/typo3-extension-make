@@ -1,11 +1,11 @@
 <?php
 
-declare(strict_types=1);
+declare(strict_types = 1);
 
 namespace Maispace\Make\Component;
 
 /**
- * Event listener component
+ * Event listener component.
  */
 class EventListener extends AbstractComponent implements ServiceConfigurationComponentInterface
 {
@@ -59,6 +59,7 @@ class EventListener extends AbstractComponent implements ServiceConfigurationCom
         );
     }
 
+    /** @return array<string, mixed> */
     public function getServiceConfiguration(): array
     {
         $configuration = [

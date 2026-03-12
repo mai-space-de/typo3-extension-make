@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types=1);
+declare(strict_types = 1);
 
 namespace Maispace\Make\Component;
 
@@ -21,7 +21,7 @@ class BackendController extends AbstractComponent implements ArrayConfigurationC
     public function getRouteIdentifierProposal(string $prefix): string
     {
         return 'tx_' . trim($prefix, '_') . '_' . mb_strtolower(
-            trim(str_replace('Controller', '', preg_replace('/(?<=\\w)([A-Z])/', '_\\1', $this->name)), '_'),
+            trim(str_replace('Controller', '', preg_replace('/(?<=\\w)([A-Z])/', '_\\1', $this->name) ?? ''), '_'),
             'utf-8'
         );
     }
@@ -55,6 +55,7 @@ class BackendController extends AbstractComponent implements ArrayConfigurationC
         return $this;
     }
 
+    /** @return array<string, mixed> */
     public function getArrayConfiguration(): array
     {
         return [
@@ -75,6 +76,7 @@ class BackendController extends AbstractComponent implements ArrayConfigurationC
         );
     }
 
+    /** @return array<string, mixed> */
     public function getServiceConfiguration(): array
     {
         return [

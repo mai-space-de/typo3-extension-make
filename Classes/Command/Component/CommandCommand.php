@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types=1);
+declare(strict_types = 1);
 
 namespace Maispace\Make\Command\Component;
 
@@ -33,26 +33,26 @@ class CommandCommand extends SimpleComponentCommand
 
         return $command
             ->setName(
-                (string)$this->io->ask(
+                $this->askString(
                     'Enter the name of the command (e.g. "AwesomeCommand")?',
                     null,
                     [$this, 'answerRequired']
                 )
             )
             ->setDirectory(
-                (string)$this->io->ask(
+                $this->askString(
                     'Enter the directory, the command should be placed in',
                     $this->getProposalFromEnvironment('COMMAND_DIR', 'Command')
                 )
             )
             ->setCommandName(
-                (string)$this->io->ask(
+                $this->askString(
                     'Enter the command name to execute on CLI',
                     $command->getCommandNameProposal($this->getProposalFromEnvironment('COMMAND_NAME_PREFIX', $this->extensionKey))
                 )
             )
             ->setDescription(
-                (string)$this->io->ask(
+                $this->askString(
                     'Enter a short description for the command',
                     null,
                     [$this, 'answerRequired']

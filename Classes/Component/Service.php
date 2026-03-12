@@ -1,11 +1,11 @@
 <?php
 
-declare(strict_types=1);
+declare(strict_types = 1);
 
 namespace Maispace\Make\Component;
 
 /**
- * Service component
+ * Service component.
  */
 class Service extends AbstractComponent
 {

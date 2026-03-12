@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types=1);
+declare(strict_types = 1);
 
 namespace Maispace\Make\Command\Component;
 
@@ -31,14 +31,14 @@ class TraitCommand extends SimpleComponentCommand
 
         return $trait
             ->setName(
-                (string)$this->io->ask(
+                $this->askString(
                     'Enter the name of the trait (e.g. "HasTimestampsTrait")',
                     null,
                     [$this, 'answerRequired']
                 )
             )
             ->setDirectory(
-                (string)$this->io->ask(
+                $this->askString(
                     'Enter the directory, the trait should be placed in',
                     $this->getProposalFromEnvironment('TRAIT_DIR', 'Trait')
                 )

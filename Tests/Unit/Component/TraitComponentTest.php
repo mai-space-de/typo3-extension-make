@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types=1);
+declare(strict_types = 1);
 
 namespace Maispace\Make\Tests\Unit\Component;
 
@@ -28,7 +28,7 @@ class TraitComponentTest extends TestCase
         $expectedFileContent = <<<'EOF'
 <?php
 
-declare(strict_types=1);
+declare(strict_types = 1);
 
 namespace Vendor\Extension\Trait;
 

@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types=1);
+declare(strict_types = 1);
 
 namespace Maispace\Make\Tests\Unit\Component;
 
@@ -58,6 +58,7 @@ class UpgradeWizardTest extends TestCase
 
     /**
      * @test
+     *
      * @dataProvider identifierProposalDataProvider
      */
     public function identifierProposalIsGeneratedCorrectly(string $name, string $extensionKey, string $expectedIdentifier): void

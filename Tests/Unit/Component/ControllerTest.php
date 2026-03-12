@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types=1);
+declare(strict_types = 1);
 
 namespace Maispace\Make\Tests\Unit\Component;
 
@@ -27,25 +27,25 @@ class ControllerTest extends TestCase
     public function generateControllerFileContentTest(): void
     {
         $expectedFileContent = <<<'EOF'
-<?php
+            <?php
 
-declare(strict_types=1);
+            declare(strict_types=1);
 
-namespace Vendor\Extension\Controller;
+            namespace Vendor\Extension\Controller;
 
-use Psr\Http\Message\ResponseInterface;
-use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
+            use Psr\Http\Message\ResponseInterface;
+            use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 
-class BlogController extends ActionController
-{
-    public function indexAction(): ResponseInterface
-    {
-        // Do awesome stuff
-        return $this->htmlResponse();
-    }
-}
+            class BlogController extends ActionController
+            {
+                public function indexAction(): ResponseInterface
+                {
+                    // Do awesome stuff
+                    return $this->htmlResponse();
+                }
+            }
 
-EOF;
+            EOF;
 
         self::assertEquals($expectedFileContent, $this->subject->__toString());
     }

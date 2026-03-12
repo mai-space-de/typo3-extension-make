@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types=1);
+declare(strict_types = 1);
 
 namespace Maispace\Make\Command\Component;
 
@@ -33,26 +33,26 @@ class UpgradeWizardCommand extends SimpleComponentCommand
 
         return $upgradeWizard
             ->setName(
-                (string)$this->io->ask(
+                $this->askString(
                     'Enter the name of the upgrade wizard (e.g. "MigrateSlugUpgradeWizard")',
                     null,
                     [$this, 'answerRequired']
                 )
             )
             ->setDirectory(
-                (string)$this->io->ask(
+                $this->askString(
                     'Enter the directory, the upgrade wizard should be placed in',
                     $this->getProposalFromEnvironment('UPGRADE_WIZARD_DIR', 'UpgradeWizard')
                 )
             )
             ->setIdentifier(
-                (string)$this->io->ask(
+                $this->askString(
                     'Enter the unique identifier for the upgrade wizard',
                     $upgradeWizard->getIdentifierProposalForWizard($this->getProposalFromEnvironment('UPGRADE_WIZARD_PREFIX', $this->extensionKey))
                 )
             )
             ->setTitle(
-                (string)$this->io->ask(
+                $this->askString(
                     'Enter a human-readable title for the upgrade wizard',
                     $this->getProposalFromEnvironment('UPGRADE_WIZARD_TITLE', '')
                 )

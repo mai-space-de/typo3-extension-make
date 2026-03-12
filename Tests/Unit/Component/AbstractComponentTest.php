@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types=1);
+declare(strict_types = 1);
 
 namespace Maispace\Make\Tests\Unit\Component;
 
@@ -11,6 +11,7 @@ class AbstractComponentTest extends TestCase
 {
     /**
      * @test
+     *
      * @dataProvider psr4PrefixIsSanitizedDataProvider
      */
     public function psr4PrefixIsSanitized(string $psr4Prefix): void
@@ -49,6 +50,7 @@ class AbstractComponentTest extends TestCase
 
     /**
      * @test
+     *
      * @dataProvider nameIsSanitizedDataProvider
      */
     public function nameIsSanitized(string $name): void
@@ -102,6 +104,7 @@ class AbstractComponentTest extends TestCase
 
     /**
      * @test
+     *
      * @dataProvider namespaceIsSanitizedDataProvider
      */
     public function namespaceIsSanitized(string $directory, string $expectedNamespace): void
@@ -144,6 +147,7 @@ class AbstractComponentTest extends TestCase
 
     /**
      * @test
+     *
      * @dataProvider classNameIsSanitizedDataProvider
      */
     public function classNameIsSanitized(string $name, string $directory, string $expectedClassName): void
@@ -182,6 +186,7 @@ class AbstractComponentTest extends TestCase
 
     /**
      * @test
+     *
      * @dataProvider getIdentifierProposalTestDataProvider
      */
     public function getIdentifierProposalTest(
@@ -224,6 +229,7 @@ class AbstractComponentTest extends TestCase
 
     /**
      * @test
+     *
      * @dataProvider getIdentifierProposalWithStaticPrefixTestDataProvider
      */
     public function getIdentifierProposalWithStaticPrefixTest(

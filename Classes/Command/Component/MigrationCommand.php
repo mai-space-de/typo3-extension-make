@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types=1);
+declare(strict_types = 1);
 
 namespace Maispace\Make\Command\Component;
 
@@ -31,20 +31,20 @@ class MigrationCommand extends SimpleComponentCommand
 
         return $migration
             ->setName(
-                (string)$this->io->ask(
+                $this->askString(
                     'Enter the name of the migration (e.g. "MigrateUserDataMigration")',
                     null,
                     [$this, 'answerRequired']
                 )
             )
             ->setDirectory(
-                (string)$this->io->ask(
+                $this->askString(
                     'Enter the directory, the migration should be placed in',
                     $this->getProposalFromEnvironment('MIGRATION_DIR', 'Migration')
                 )
             )
             ->setDescription(
-                (string)$this->io->ask(
+                $this->askString(
                     'Enter a short description for this migration',
                     $this->getProposalFromEnvironment('MIGRATION_DESCRIPTION', '')
                 )

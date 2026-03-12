@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types=1);
+declare(strict_types = 1);
 
 namespace Maispace\Make\Component;
 
@@ -11,7 +11,9 @@ class Middleware extends AbstractComponent implements ArrayConfigurationComponen
 {
     protected string $identifier = '';
     protected string $type = '';
+    /** @var array<int, string> */
     protected array $before = [];
+    /** @var array<int, string> */
     protected array $after = [];
 
     public function getIdentifier(): string
@@ -38,6 +40,9 @@ class Middleware extends AbstractComponent implements ArrayConfigurationComponen
         return $this;
     }
 
+    /**
+     * @param array<int, string> $before
+     */
     public function setBefore(array $before): self
     {
         $this->before = $before;
@@ -45,6 +50,9 @@ class Middleware extends AbstractComponent implements ArrayConfigurationComponen
         return $this;
     }
 
+    /**
+     * @param array<int, string> $after
+     */
     public function setAfter(array $after): self
     {
         $this->after = $after;
@@ -63,6 +71,7 @@ class Middleware extends AbstractComponent implements ArrayConfigurationComponen
         );
     }
 
+    /** @return array<string, mixed> */
     public function getArrayConfiguration(): array
     {
         $configuration = [
