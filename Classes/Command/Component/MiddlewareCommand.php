@@ -82,16 +82,17 @@ class MiddlewareCommand extends SimpleComponentCommand
     protected function publishComponentConfiguration(ComponentInterface $component): bool
     {
         $middlewareConfiguration = $this->arrayConfiguration->getConfiguration();
-        $typeConfig = is_array($middlewareConfiguration[$component->getType()] ?? null)
-            ? $middlewareConfiguration[$component->getType()]
-            : [];
-        if (isset($typeConfig[$component->getIdentifier()])
-            && !$this->io->confirm('The identifier ' . $component->getIdentifier() . ' already exists for type ' . $component->getType() . '. Do you want to override it?', true)
+        $type = $component->getType();
+        $identifier = $component->getIdentifier();
+        $typeConfig = is_array($middlewareConfiguration[$type] ?? null) ? $middlewareConfiguration[$type] : [];
+        if (isset($typeConfig[$identifier])
+            && !$this->io->confirm('The identifier ' . $identifier . ' already exists for type ' . $type . '. Do you want to override it?', true)
         ) {
             throw new AbortCommandException('Aborting middleware generation.', 1639664755);
         }
 
-        $middlewareConfiguration[$component->getType()][$component->getIdentifier()] = $component->getArrayConfiguration();
+        $typeConfig[$identifier] = $component->getArrayConfiguration();
+        $middlewareConfiguration[$type] = $typeConfig;
         $this->arrayConfiguration->setConfiguration($middlewareConfiguration);
         if (!$this->writeArrayConfiguration()) {
             $this->io->error('Updating middleware configuration failed.');
@@ -99,7 +100,7 @@ class MiddlewareCommand extends SimpleComponentCommand
             return false;
         }
 
-        $this->io->success('Successfully created the middleware ' . $component->getName() . ' (' . $component->getIdentifier() . ').');
+        $this->io->success('Successfully created the middleware ' . $component->getName() . ' (' . $identifier . ').');
 
         return true;
     }

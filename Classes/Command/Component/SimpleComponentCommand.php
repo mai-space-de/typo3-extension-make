@@ -23,7 +23,7 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
 abstract class SimpleComponentCommand extends AbstractCommand
 {
     protected string $extensionKey = '';
-    protected ?PackageInterface $package = null;
+    protected PackageInterface $package;
     protected string $psr4Prefix = '';
     protected ServiceConfiguration $serviceConfiguration;
     protected ArrayConfiguration $arrayConfiguration;
@@ -44,13 +44,14 @@ abstract class SimpleComponentCommand extends AbstractCommand
     {
         parent::initialize($input, $output);
 
-        $this->package = $this->getPackage($input);
-        if ($this->package === null || !$this->package->getValueFromComposerManifest()) {
+        $package = $this->getPackage($input);
+        if ($package === null || !$package->getValueFromComposerManifest()) {
             throw new InvalidPackageException(
                 'The requested extension is invalid.',
                 1639664756
             );
         }
+        $this->package = $package;
         $this->extensionKey = $this->package->getPackageKey();
         $this->psr4Prefix = $this->getPsr4Prefix($this->package);
     }
@@ -114,17 +115,21 @@ abstract class SimpleComponentCommand extends AbstractCommand
     {
         $autoload = $package->getValueFromComposerManifest('autoload');
         $psr4 = is_object($autoload) ? ($autoload->{'psr-4'} ?? []) : [];
+        $firstKey = key(is_array($psr4) ? $psr4 : (array)$psr4);
 
-        return (string)key((array)$psr4);
+        return is_string($firstKey) ? $firstKey : '';
     }
 
     protected function getExtensionClassesPath(PackageInterface $package, string $psr4Prefix): string
     {
         $autoload = $package->getValueFromComposerManifest('autoload');
         $psr4 = is_object($autoload) ? ($autoload->{'psr-4'} ?? null) : null;
-        $classesPath = (is_object($psr4) && isset($psr4->{$psr4Prefix})) ? (string)$psr4->{$psr4Prefix} : '';
+        if (!is_object($psr4) || !isset($psr4->{$psr4Prefix})) {
+            return '';
+        }
+        $classesPath = $psr4->{$psr4Prefix};
 
-        return $classesPath ? (trim($classesPath, '/') . '/') : '';
+        return is_string($classesPath) ? (trim($classesPath, '/') . '/') : '';
     }
 
     /**
