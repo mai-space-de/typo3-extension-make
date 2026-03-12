@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types=1);
+declare(strict_types = 1);
 
 namespace Maispace\Make\Command\Component;
 
@@ -34,26 +34,26 @@ class MiddlewareCommand extends SimpleComponentCommand
 
         return $middleware
             ->setName(
-                (string)$this->io->ask(
+                $this->askString(
                     'Enter the name of the middleware (e.g. "PostProcessContent")',
                     null,
                     [$this, 'answerRequired']
                 )
             )
             ->setDirectory(
-                (string)$this->io->ask(
+                $this->askString(
                     'Enter the directory, the middleware should be placed in',
                     $this->getProposalFromEnvironment('MIDDLEWARE_DIR', 'Middleware')
                 )
             )
             ->setIdentifier(
-                (string)$this->io->ask(
+                $this->askString(
                     'Enter an identifier for the middleware',
                     $middleware->getIdentifierProposal($this->getProposalFromEnvironment('MIDDLEWARE_IDENTIFIER_PREFIX'))
                 )
             )
             ->setType(
-                (string)$this->io->choice(
+                $this->askChoice(
                     'Choose the type (context) for the middleware',
                     ['frontend', 'backend'],
                     $this->getProposalFromEnvironment('MIDDLEWARE_TYPE', 'frontend')
@@ -62,14 +62,14 @@ class MiddlewareCommand extends SimpleComponentCommand
             ->setBefore(
                 GeneralUtility::trimExplode(
                     ',',
-                    (string)$this->io->ask('Enter a comma separated list of identifiers the new middleware should be executed beforehand'),
+                    $this->askString('Enter a comma separated list of identifiers the new middleware should be executed beforehand'),
                     true
                 )
             )
             ->setAfter(
                 GeneralUtility::trimExplode(
                     ',',
-                    (string)$this->io->ask('Enter a comma separated list of identifiers after which the new middleware should be executed'),
+                    $this->askString('Enter a comma separated list of identifiers after which the new middleware should be executed'),
                     true
                 )
             );
@@ -82,13 +82,17 @@ class MiddlewareCommand extends SimpleComponentCommand
     protected function publishComponentConfiguration(ComponentInterface $component): bool
     {
         $middlewareConfiguration = $this->arrayConfiguration->getConfiguration();
-        if (isset($middlewareConfiguration[$component->getType()][$component->getIdentifier()])
-            && !$this->io->confirm('The identifier ' . $component->getIdentifier() . ' already exists for type ' . $component->getType() . '. Do you want to override it?', true)
+        $type = $component->getType();
+        $identifier = $component->getIdentifier();
+        $typeConfig = is_array($middlewareConfiguration[$type] ?? null) ? $middlewareConfiguration[$type] : [];
+        if (isset($typeConfig[$identifier])
+            && !$this->io->confirm('The identifier ' . $identifier . ' already exists for type ' . $type . '. Do you want to override it?', true)
         ) {
             throw new AbortCommandException('Aborting middleware generation.', 1639664755);
         }
 
-        $middlewareConfiguration[$component->getType()][$component->getIdentifier()] = $component->getArrayConfiguration();
+        $typeConfig[$identifier] = $component->getArrayConfiguration();
+        $middlewareConfiguration[$type] = $typeConfig;
         $this->arrayConfiguration->setConfiguration($middlewareConfiguration);
         if (!$this->writeArrayConfiguration()) {
             $this->io->error('Updating middleware configuration failed.');
@@ -96,7 +100,7 @@ class MiddlewareCommand extends SimpleComponentCommand
             return false;
         }
 
-        $this->io->success('Successfully created the middleware ' . $component->getName() . ' (' . $component->getIdentifier() . ').');
+        $this->io->success('Successfully created the middleware ' . $component->getName() . ' (' . $identifier . ').');
 
         return true;
     }

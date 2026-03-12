@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types=1);
+declare(strict_types = 1);
 
 namespace Maispace\Make\Environment;
 
@@ -20,6 +20,12 @@ class Variables
 
     public static function get(string $name): string
     {
-        return $_ENV[self::ENV_PREFIX . $name] ?? getenv(self::ENV_PREFIX . $name) ?: '';
+        $value = $_ENV[self::ENV_PREFIX . $name] ?? null;
+        if (is_string($value)) {
+            return $value;
+        }
+        $envValue = getenv(self::ENV_PREFIX . $name);
+
+        return is_string($envValue) ? $envValue : '';
     }
 }

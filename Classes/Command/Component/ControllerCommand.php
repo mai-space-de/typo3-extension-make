@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types=1);
+declare(strict_types = 1);
 
 namespace Maispace\Make\Command\Component;
 
@@ -31,20 +31,20 @@ class ControllerCommand extends SimpleComponentCommand
 
         return $controller
             ->setName(
-                (string)$this->io->ask(
+                $this->askString(
                     'Enter the name of the controller (e.g. "BlogController")',
                     null,
                     [$this, 'answerRequired']
                 )
             )
             ->setDirectory(
-                (string)$this->io->ask(
+                $this->askString(
                     'Enter the directory, the controller should be placed in',
                     $this->getProposalFromEnvironment('CONTROLLER_DIR', 'Controller')
                 )
             )
             ->setActionName(
-                (string)$this->io->ask(
+                $this->askString(
                     'Enter the name of the first action (e.g. "index")',
                     $this->getProposalFromEnvironment('CONTROLLER_ACTION', 'index')
                 )

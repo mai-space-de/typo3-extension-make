@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types=1);
+declare(strict_types = 1);
 
 namespace Maispace\Make\Command\Component;
 
@@ -31,14 +31,14 @@ class ViewHelperCommand extends SimpleComponentCommand
 
         return $viewHelper
             ->setName(
-                (string)$this->io->ask(
+                $this->askString(
                     'Enter the name of the ViewHelper (e.g. "FormatDateViewHelper")',
                     null,
                     [$this, 'answerRequired']
                 )
             )
             ->setDirectory(
-                (string)$this->io->ask(
+                $this->askString(
                     'Enter the directory, the ViewHelper should be placed in',
                     $this->getProposalFromEnvironment('VIEWHELPER_DIR', 'ViewHelpers')
                 )

@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types=1);
+declare(strict_types = 1);
 
 namespace Maispace\Make\Component;
 
@@ -9,5 +9,6 @@ namespace Maispace\Make\Component;
  */
 interface ArrayConfigurationComponentInterface
 {
+    /** @return array<string, mixed> */
     public function getArrayConfiguration(): array;
 }

@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types=1);
+declare(strict_types = 1);
 
 namespace Maispace\Make\IO;
 
@@ -51,6 +51,8 @@ class ServiceConfiguration extends AbstractConfiguration
 
     /**
      * Load the service configuration
+     *
+     * @return array<string, mixed>
      */
     protected function load(): array
     {
@@ -69,6 +71,10 @@ class ServiceConfiguration extends AbstractConfiguration
         return is_array($configuration) ? $configuration : [];
     }
 
+    /**
+     * @param array<string, mixed> $newConfiguration
+     * @return array<string, mixed>
+     */
     protected function sortImportsOnTop(array $newConfiguration): array
     {
         ksort($newConfiguration);

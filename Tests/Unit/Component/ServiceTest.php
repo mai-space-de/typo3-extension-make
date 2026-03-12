@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types=1);
+declare(strict_types = 1);
 
 namespace Maispace\Make\Tests\Unit\Component;
 
@@ -26,18 +26,18 @@ class ServiceTest extends TestCase
     public function generateServiceFileContentTest(): void
     {
         $expectedFileContent = <<<'EOF'
-<?php
+            <?php
 
-declare(strict_types=1);
+            declare(strict_types=1);
 
-namespace Vendor\Extension\Service;
+            namespace Vendor\Extension\Service;
 
-class UserService
-{
-    // Add service methods here
-}
+            class UserService
+            {
+                // Add service methods here
+            }
 
-EOF;
+            EOF;
 
         self::assertEquals($expectedFileContent, $this->subject->__toString());
     }

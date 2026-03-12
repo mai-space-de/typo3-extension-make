@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types=1);
+declare(strict_types = 1);
 
 namespace Maispace\Make\Command\Component;
 
@@ -44,13 +44,14 @@ abstract class SimpleComponentCommand extends AbstractCommand
     {
         parent::initialize($input, $output);
 
-        $this->package = $this->getPackage($input);
-        if ($this->package === null || !$this->package->getValueFromComposerManifest()) {
+        $package = $this->getPackage($input);
+        if ($package === null || !$package->getValueFromComposerManifest()) {
             throw new InvalidPackageException(
                 'The requested extension is invalid.',
                 1639664756
             );
         }
+        $this->package = $package;
         $this->extensionKey = $this->package->getPackageKey();
         $this->psr4Prefix = $this->getPsr4Prefix($this->package);
     }
@@ -112,14 +113,23 @@ abstract class SimpleComponentCommand extends AbstractCommand
 
     protected function getPsr4Prefix(PackageInterface $package): string
     {
-        return (string)key((array)($package->getValueFromComposerManifest('autoload')->{'psr-4'} ?? []));
+        $autoload = $package->getValueFromComposerManifest('autoload');
+        $psr4 = is_object($autoload) ? ($autoload->{'psr-4'} ?? []) : [];
+        $firstKey = key(is_array($psr4) ? $psr4 : (array)$psr4);
+
+        return is_string($firstKey) ? $firstKey : '';
     }
 
     protected function getExtensionClassesPath(PackageInterface $package, string $psr4Prefix): string
     {
-        $classesPath = (string)($package->getValueFromComposerManifest('autoload')->{'psr-4'}->{$psr4Prefix} ?? '');
+        $autoload = $package->getValueFromComposerManifest('autoload');
+        $psr4 = is_object($autoload) ? ($autoload->{'psr-4'} ?? null) : null;
+        if (!is_object($psr4) || !isset($psr4->{$psr4Prefix})) {
+            return '';
+        }
+        $classesPath = $psr4->{$psr4Prefix};
 
-        return $classesPath ? (trim($classesPath, '/') . '/') : '';
+        return is_string($classesPath) ? (trim($classesPath, '/') . '/') : '';
     }
 
     /**
@@ -151,14 +161,16 @@ abstract class SimpleComponentCommand extends AbstractCommand
             return false;
         }
 
-        if (isset($configuration['services'][$component->getClassName()])
+        $services = is_array($configuration['services']) ? $configuration['services'] : [];
+
+        if (isset($services[$component->getClassName()])
             && !$this->io->confirm('A service configuration for ' . $component->getClassName() . ' already exists. Do you want to override it?', true)
         ) {
             throw new AbortCommandException('Aborting component generation.', 1639664758);
         }
 
         $configuration['services'] = array_replace_recursive(
-            $configuration['services'],
+            $services,
             $component->getServiceConfiguration()
         );
 

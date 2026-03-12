@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types=1);
+declare(strict_types = 1);
 
 namespace Maispace\Make\IO;
 
@@ -9,7 +9,10 @@ namespace Maispace\Make\IO;
  */
 interface ConfigurationInterface
 {
+    /** @return array<string, mixed> */
     public function getConfiguration(): array;
+
+    /** @param array<string, mixed> $configuration */
     public function setConfiguration(array $configuration): self;
     public function write(): bool;
 }

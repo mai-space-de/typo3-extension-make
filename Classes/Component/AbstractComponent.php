@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types=1);
+declare(strict_types = 1);
 
 namespace Maispace\Make\Component;
 
@@ -74,14 +74,19 @@ abstract class AbstractComponent implements ComponentInterface
         return rtrim($this->psr4Prefix . ucfirst(trim(str_replace('/', '\\', $this->directory), '\\')), '\\');
     }
 
+    /**
+     * @param array<string, string> $replace
+     */
     protected function createFileContent(string $fileName, array $replace): string
     {
+        $template = file_get_contents(__DIR__ . '/../../Resources/Private/CodeTemplates/' . $fileName);
+
         return (string)preg_replace_callback(
             '/\{\{([A-Z_]*)\}\}/',
-            static function ($result) use ($replace): string {
+            static function (array $result) use ($replace): string {
                 return $replace[$result[1]] ?? $result[0];
             },
-            file_get_contents(__DIR__ . '/../../Resources/Private/CodeTemplates/' . $fileName)
+            $template !== false ? $template : ''
         );
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types=1);
+declare(strict_types = 1);
 
 namespace Maispace\Make\Command;
 
@@ -16,7 +16,7 @@ use TYPO3\CMS\Core\Package\PackageInterface;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 /**
- * Abstract command with basic functionalities
+ * Abstract command with basic functionalities.
  */
 abstract class AbstractCommand extends Command
 {
@@ -34,12 +34,9 @@ abstract class AbstractCommand extends Command
         return Variables::has($key) ? Variables::get($key) : $default;
     }
 
-    /**
-     * @param mixed $answer
-     */
     public function answerRequired(mixed $answer): string
     {
-        $answer = (string)$answer;
+        $answer = is_scalar($answer) ? (string)$answer : '';
 
         if (trim($answer) === '') {
             throw new EmptyAnswerException('Answer can not be empty.', 1639664759);
@@ -48,9 +45,24 @@ abstract class AbstractCommand extends Command
         return $answer;
     }
 
+    protected function askString(string $question, ?string $default = null, ?callable $validator = null): string
+    {
+        $result = $this->io->ask($question, $default, $validator);
+
+        return is_string($result) ? $result : ($default ?? '');
+    }
+
     /**
-     * @param mixed $answer
-     *
+     * @param array<int|string, string> $choices
+     */
+    protected function askChoice(string $question, array $choices, ?string $default = null): string
+    {
+        $result = $this->io->choice($question, $choices, $default);
+
+        return is_string($result) ? $result : ($default ?? '');
+    }
+
+    /**
      * @see https://getcomposer.org/doc/04-schema.md#name
      */
     public function validatePackageKey(mixed $answer): string
@@ -58,24 +70,23 @@ abstract class AbstractCommand extends Command
         $answer = $this->answerRequired($answer);
 
         if (!preg_match('/^[a-z0-9]([_.-]?[a-z0-9]+)*\/[a-z0-9](([_.]?|-{0,2})[a-z0-9]+)*$/', $answer)) {
-            throw new InvalidPackageNameException(
-                'Package key does not match the allowed pattern. More information are available on https://getcomposer.org/doc/04-schema.md#name.',
-                1639664760
-            );
+            throw new InvalidPackageNameException('Package key does not match the allowed pattern. More information are available on https://getcomposer.org/doc/04-schema.md#name.', 1639664760);
         }
 
         return $answer;
     }
 
     /**
-     * Resolve package using the extension key from either input argument, environment variable or CLI
+     * Resolve package using the extension key from either input argument, environment variable or CLI.
      */
     protected function getPackage(InputInterface $input): ?PackageInterface
     {
-        if ($input->hasArgument('extensionKey')
-            && ($key = ($input->getArgument('extensionKey') ?? '')) !== ''
-        ) {
-            return $this->packageResolver->resolvePackage($key);
+        if ($input->hasArgument('extensionKey')) {
+            $argValue = $input->getArgument('extensionKey');
+            $key = is_string($argValue) ? $argValue : '';
+            if ($key !== '') {
+                return $this->packageResolver->resolvePackage($key);
+            }
         }
 
         if (($key = $this->getProposalFromEnvironment('EXTENSION_KEY')) !== '') {
@@ -97,7 +108,8 @@ abstract class AbstractCommand extends Command
     protected function askForExtensionKey(): string
     {
         $packages = $this->packageResolver->getAvailablePackages();
-        $choices = array_reduce($packages, static function ($result, PackageInterface $package) {
+        /** @var array<string, string> $choices */
+        $choices = array_reduce($packages, static function (array $result, PackageInterface $package): array {
             if ($package->getValueFromComposerManifest('type') === 'typo3-cms-extension' && $package->getPackageKey() !== 'maispace_make') {
                 $extensionKey = $package->getPackageKey();
                 $result[$extensionKey] = $extensionKey;
@@ -110,6 +122,8 @@ abstract class AbstractCommand extends Command
             throw new \LogicException('No available extension found. You may want to create one first.');
         }
 
-        return (string)$this->io->choice('Select a extension to work on', $choices);
+        $selected = $this->io->choice('Select a extension to work on', $choices);
+
+        return is_string($selected) ? $selected : '';
     }
 }

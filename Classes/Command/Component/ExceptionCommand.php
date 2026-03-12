@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types=1);
+declare(strict_types = 1);
 
 namespace Maispace\Make\Command\Component;
 
@@ -31,20 +31,20 @@ class ExceptionCommand extends SimpleComponentCommand
 
         return $exception
             ->setName(
-                (string)$this->io->ask(
+                $this->askString(
                     'Enter the name of the exception (e.g. "InvalidArgumentException")',
                     null,
                     [$this, 'answerRequired']
                 )
             )
             ->setDirectory(
-                (string)$this->io->ask(
+                $this->askString(
                     'Enter the directory, the exception should be placed in',
                     $this->getProposalFromEnvironment('EXCEPTION_DIR', 'Exception')
                 )
             )
             ->setParentClass(
-                (string)$this->io->ask(
+                $this->askString(
                     'Enter the parent class to extend',
                     $this->getProposalFromEnvironment('EXCEPTION_PARENT', '\\RuntimeException')
                 )

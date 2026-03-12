@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types=1);
+declare(strict_types = 1);
 
 namespace Maispace\Make\Tests\Unit\Component;
 
@@ -26,18 +26,18 @@ class EventTest extends TestCase
     public function generateEventFileContentTest(): void
     {
         $expectedFileContent = <<<'EOF'
-<?php
+            <?php
 
-declare(strict_types=1);
+            declare(strict_types=1);
 
-namespace Vendor\Extension\Event;
+            namespace Vendor\Extension\Event;
 
-final class UserRegisteredEvent
-{
-    // Add event properties and constructor here
-}
+            final class UserRegisteredEvent
+            {
+                // Add event properties and constructor here
+            }
 
-EOF;
+            EOF;
 
         self::assertEquals($expectedFileContent, $this->subject->__toString());
     }

@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types=1);
+declare(strict_types = 1);
 
 namespace Maispace\Make\Tests\Unit\Component;
 
@@ -29,27 +29,27 @@ class MiddlewareTest extends TestCase
     public function generateMiddlewareFileContentTest(): void
     {
         $expectedFileContent = <<<'EOF'
-<?php
+            <?php
 
-declare(strict_types=1);
+            declare(strict_types=1);
 
-namespace Vendor\Extension;
+            namespace Vendor\Extension;
 
-use Psr\Http\Message\ResponseInterface;
-use Psr\Http\Server\MiddlewareInterface;
-use Psr\Http\Message\ServerRequestInterface;
-use Psr\Http\Server\RequestHandlerInterface;
+            use Psr\Http\Message\ResponseInterface;
+            use Psr\Http\Server\MiddlewareInterface;
+            use Psr\Http\Message\ServerRequestInterface;
+            use Psr\Http\Server\RequestHandlerInterface;
 
-class MyMiddleware implements MiddlewareInterface
-{
-    public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
-    {
-        // Do awesome stuff
-        return $handler->handle($request);
-    }
-}
+            class MyMiddleware implements MiddlewareInterface
+            {
+                public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
+                {
+                    // Do awesome stuff
+                    return $handler->handle($request);
+                }
+            }
 
-EOF;
+            EOF;
 
         self::assertEquals($expectedFileContent, $this->subject->__toString());
     }
