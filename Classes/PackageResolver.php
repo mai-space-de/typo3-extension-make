@@ -9,7 +9,7 @@ use TYPO3\CMS\Core\Package\PackageInterface;
 use TYPO3\CMS\Core\Package\PackageManager;
 
 /**
- * Resolves packages using the TYPO3 PackageManager
+ * Resolves packages using the TYPO3 PackageManager.
  */
 class PackageResolver
 {

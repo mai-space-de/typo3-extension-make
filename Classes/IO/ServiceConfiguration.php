@@ -8,7 +8,7 @@ use Symfony\Component\Yaml\Yaml;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 /**
- * IO operations for the service configuration of an extension
+ * IO operations for the service configuration of an extension.
  */
 class ServiceConfiguration extends AbstractConfiguration
 {
@@ -16,7 +16,7 @@ class ServiceConfiguration extends AbstractConfiguration
     private const CONFIGURATION_FILE = 'Services.yaml';
 
     /**
-     * Write / update the service configuration
+     * Write / update the service configuration.
      *
      * @return bool Whether the service configuration was updated successfully
      */
@@ -32,7 +32,7 @@ class ServiceConfiguration extends AbstractConfiguration
     }
 
     /**
-     * Initialize a new basic service configuration
+     * Initialize a new basic service configuration.
      */
     public function createBasicServiceConfiguration(string $psr4Prefix): void
     {
@@ -50,7 +50,7 @@ class ServiceConfiguration extends AbstractConfiguration
     }
 
     /**
-     * Load the service configuration
+     * Load the service configuration.
      *
      * @return array<string, mixed>
      */
@@ -68,11 +68,13 @@ class ServiceConfiguration extends AbstractConfiguration
             return [];
         }
 
+        /** @var array<string, mixed> $configuration */
         return is_array($configuration) ? $configuration : [];
     }
 
     /**
      * @param array<string, mixed> $newConfiguration
+     *
      * @return array<string, mixed>
      */
     protected function sortImportsOnTop(array $newConfiguration): array

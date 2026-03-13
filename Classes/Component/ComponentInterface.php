@@ -5,7 +5,7 @@ declare(strict_types = 1);
 namespace Maispace\Make\Component;
 
 /**
- * Interface to be implemented by components
+ * Interface to be implemented by components.
  */
 interface ComponentInterface
 {

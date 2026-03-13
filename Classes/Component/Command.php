@@ -5,7 +5,7 @@ declare(strict_types = 1);
 namespace Maispace\Make\Component;
 
 /**
- * Console command component
+ * Console command component.
  */
 class Command extends AbstractComponent implements ServiceConfigurationComponentInterface
 {

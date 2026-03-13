@@ -5,7 +5,7 @@ declare(strict_types = 1);
 namespace Maispace\Make\Component;
 
 /**
- * PSR-14 event component
+ * PSR-14 event component.
  */
 class Event extends AbstractComponent
 {

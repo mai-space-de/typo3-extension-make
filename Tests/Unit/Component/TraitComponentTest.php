@@ -26,18 +26,18 @@ class TraitComponentTest extends TestCase
     public function generateTraitFileContentTest(): void
     {
         $expectedFileContent = <<<'EOF'
-<?php
+            <?php
 
-declare(strict_types = 1);
+            declare(strict_types = 1);
 
-namespace Vendor\Extension\Trait;
+            namespace Vendor\Extension\Trait;
 
-trait HasTimestampsTrait
-{
-    // Add trait methods here
-}
+            trait HasTimestampsTrait
+            {
+                // Add trait methods here
+            }
 
-EOF;
+            EOF;
 
         self::assertEquals($expectedFileContent, $this->subject->__toString());
     }

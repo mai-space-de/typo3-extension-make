@@ -18,7 +18,7 @@ use TYPO3\CMS\Core\Package\PackageInterface;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 /**
- * Abstract class for creating simple components with only one file and an array and/or service configuration
+ * Abstract class for creating simple components with only one file and an array and/or service configuration.
  */
 abstract class SimpleComponentCommand extends AbstractCommand
 {
@@ -38,7 +38,7 @@ abstract class SimpleComponentCommand extends AbstractCommand
     }
 
     /**
-     * Initialization of context, e.g. extension key and package
+     * Initialization of context, e.g. extension key and package.
      */
     protected function initialize(InputInterface $input, OutputInterface $output): void
     {
@@ -46,10 +46,7 @@ abstract class SimpleComponentCommand extends AbstractCommand
 
         $package = $this->getPackage($input);
         if ($package === null || !$package->getValueFromComposerManifest()) {
-            throw new InvalidPackageException(
-                'The requested extension is invalid.',
-                1639664756
-            );
+            throw new InvalidPackageException('The requested extension is invalid.', 1639664756);
         }
         $this->package = $package;
         $this->extensionKey = $this->package->getPackageKey();
@@ -133,7 +130,7 @@ abstract class SimpleComponentCommand extends AbstractCommand
     }
 
     /**
-     * Initialize the service configuration for the current package
+     * Initialize the service configuration for the current package.
      */
     protected function initializeServiceConfiguration(): void
     {
@@ -149,7 +146,7 @@ abstract class SimpleComponentCommand extends AbstractCommand
     }
 
     /**
-     * Write the updated service configuration for the current package
+     * Write the updated service configuration for the current package.
      *
      * @throws AbortCommandException
      */
@@ -178,7 +175,7 @@ abstract class SimpleComponentCommand extends AbstractCommand
     }
 
     /**
-     * Initialize an array configuration for the current package
+     * Initialize an array configuration for the current package.
      */
     protected function initializeArrayConfiguration(string $file, string $directory = 'Configuration/'): void
     {
@@ -189,7 +186,7 @@ abstract class SimpleComponentCommand extends AbstractCommand
     }
 
     /**
-     * Write the updated array configuration for the current package
+     * Write the updated array configuration for the current package.
      */
     protected function writeArrayConfiguration(): bool
     {
@@ -201,7 +198,7 @@ abstract class SimpleComponentCommand extends AbstractCommand
     }
 
     /**
-     * Returns the absolute path to the component directory
+     * Returns the absolute path to the component directory.
      */
     protected function getAbsoluteComponentDirectory(ComponentInterface $component): string
     {

@@ -10,7 +10,7 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
 /**
- * Command for creating a new Extbase controller component
+ * Command for creating a new Extbase controller component.
  */
 class ControllerCommand extends SimpleComponentCommand
 {

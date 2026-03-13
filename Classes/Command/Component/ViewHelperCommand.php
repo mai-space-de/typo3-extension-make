@@ -10,7 +10,7 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
 /**
- * Command for creating a new Fluid ViewHelper component
+ * Command for creating a new Fluid ViewHelper component.
  */
 class ViewHelperCommand extends SimpleComponentCommand
 {

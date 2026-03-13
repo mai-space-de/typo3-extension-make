@@ -11,7 +11,7 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
 /**
- * Command for creating a new event listener component
+ * Command for creating a new event listener component.
  */
 class EventListenerCommand extends SimpleComponentCommand
 {
@@ -64,6 +64,7 @@ class EventListenerCommand extends SimpleComponentCommand
 
     /**
      * @param EventListener $component
+     *
      * @throws AbortCommandException
      */
     protected function publishComponentConfiguration(ComponentInterface $component): bool

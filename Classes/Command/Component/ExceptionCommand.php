@@ -10,7 +10,7 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
 /**
- * Command for creating a new PHP exception class
+ * Command for creating a new PHP exception class.
  */
 class ExceptionCommand extends SimpleComponentCommand
 {

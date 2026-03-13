@@ -5,7 +5,7 @@ declare(strict_types = 1);
 namespace Maispace\Make\Component;
 
 /**
- * Upgrade wizard component
+ * Upgrade wizard component.
  */
 class UpgradeWizard extends AbstractComponent implements ServiceConfigurationComponentInterface
 {

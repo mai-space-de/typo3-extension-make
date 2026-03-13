@@ -5,7 +5,7 @@ declare(strict_types = 1);
 namespace Maispace\Make\Component;
 
 /**
- * PHP trait component
+ * PHP trait component.
  */
 class TraitComponent extends AbstractComponent
 {

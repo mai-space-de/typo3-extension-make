@@ -5,7 +5,7 @@ declare(strict_types = 1);
 namespace Maispace\Make\IO;
 
 /**
- * Interface for configuration classes performing IO operations
+ * Interface for configuration classes performing IO operations.
  */
 interface ConfigurationInterface
 {

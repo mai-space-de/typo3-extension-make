@@ -5,7 +5,7 @@ declare(strict_types = 1);
 namespace Maispace\Make\Environment;
 
 /**
- * Check and access environment variables
+ * Check and access environment variables.
  */
 class Variables
 {

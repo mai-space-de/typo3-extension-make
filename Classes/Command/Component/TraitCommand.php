@@ -10,7 +10,7 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
 /**
- * Command for creating a new PHP trait
+ * Command for creating a new PHP trait.
  */
 class TraitCommand extends SimpleComponentCommand
 {

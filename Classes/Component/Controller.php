@@ -5,7 +5,7 @@ declare(strict_types = 1);
 namespace Maispace\Make\Component;
 
 /**
- * Frontend (Extbase) controller component
+ * Frontend (Extbase) controller component.
  */
 class Controller extends AbstractComponent
 {

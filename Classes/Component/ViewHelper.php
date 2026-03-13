@@ -5,7 +5,7 @@ declare(strict_types = 1);
 namespace Maispace\Make\Component;
 
 /**
- * Fluid ViewHelper component
+ * Fluid ViewHelper component.
  */
 class ViewHelper extends AbstractComponent
 {

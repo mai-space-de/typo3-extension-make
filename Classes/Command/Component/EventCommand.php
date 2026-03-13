@@ -10,7 +10,7 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
 /**
- * Command for creating a new PSR-14 event component
+ * Command for creating a new PSR-14 event component.
  */
 class EventCommand extends SimpleComponentCommand
 {

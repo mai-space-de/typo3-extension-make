@@ -5,14 +5,16 @@ declare(strict_types = 1);
 namespace Maispace\Make\Component;
 
 /**
- * Middleware component
+ * Middleware component.
  */
 class Middleware extends AbstractComponent implements ArrayConfigurationComponentInterface
 {
     protected string $identifier = '';
     protected string $type = '';
+
     /** @var array<int, string> */
     protected array $before = [];
+
     /** @var array<int, string> */
     protected array $after = [];
 
