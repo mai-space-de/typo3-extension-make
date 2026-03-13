@@ -121,6 +121,20 @@ make:exception
      - ``\\RuntimeException``
      - Fully qualified parent class.
 
+make:interface
+==============
+
+.. list-table::
+   :header-rows: 1
+   :widths: 40 20 40
+
+   * - Variable
+     - Default
+     - Description
+   * - ``MAKE_INTERFACE_DIR``
+     - *(empty)*
+     - Directory for the generated interface. Leave empty to place it directly under ``Classes/``.
+
 make:migration
 ==============
 
@@ -157,6 +171,34 @@ make:middleware
    * - ``MAKE_MIDDLEWARE_TYPE``
      - ``frontend``
      - Middleware stack: ``frontend`` or ``backend``.
+
+make:model
+==========
+
+.. list-table::
+   :header-rows: 1
+   :widths: 40 20 40
+
+   * - Variable
+     - Default
+     - Description
+   * - ``MAKE_MODEL_DIR``
+     - ``Domain/Model``
+     - Directory for the generated model class.
+
+make:repository
+===============
+
+.. list-table::
+   :header-rows: 1
+   :widths: 40 20 40
+
+   * - Variable
+     - Default
+     - Description
+   * - ``MAKE_REPOSITORY_DIR``
+     - ``Domain/Repository``
+     - Directory for the generated repository class.
 
 make:service
 ============

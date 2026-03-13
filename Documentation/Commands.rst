@@ -246,6 +246,41 @@ Creates a **PHP exception class**.
 
 ----
 
+.. _cmd-interface:
+
+make:interface
+==============
+
+Creates a **PHP interface**.
+
+.. code-block:: bash
+
+    vendor/bin/typo3 make:interface my_extension
+
+**Prompts**
+
+*  Interface name (e.g. ``UserRepositoryInterface``)
+*  Directory (leave empty to place the interface directly under ``Classes/``)
+
+**Files written**
+
+*  ``Classes/<Directory>/<Name>.php``
+
+**Example output** (``UserRepositoryInterface.php``):
+
+.. code-block:: php
+
+    <?php
+    declare(strict_types=1);
+    namespace Vendor\Extension\Domain\Repository;
+
+    interface UserRepositoryInterface
+    {
+        // Add interface methods here
+    }
+
+----
+
 .. _cmd-migration:
 
 make:migration
@@ -341,6 +376,79 @@ Creates a **PSR-15 middleware** and registers it in ``Configuration/RequestMiddl
             // Do awesome stuff
             return $handler->handle($request);
         }
+    }
+
+----
+
+.. _cmd-model:
+
+make:model
+==========
+
+Creates an **Extbase domain model** extending ``AbstractEntity``.
+
+.. code-block:: bash
+
+    vendor/bin/typo3 make:model my_extension
+
+**Prompts**
+
+*  Class name (e.g. ``BlogPost``)
+*  Directory (default: ``Domain/Model``)
+
+**Files written**
+
+*  ``Classes/Domain/Model/<Name>.php``
+
+**Example output** (``BlogPost.php``):
+
+.. code-block:: php
+
+    <?php
+    declare(strict_types=1);
+    namespace Vendor\Extension\Domain\Model;
+
+    use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
+
+    class BlogPost extends AbstractEntity
+    {
+        // Add model properties here
+    }
+
+----
+
+.. _cmd-repository:
+
+make:repository
+===============
+
+Creates an **Extbase domain repository** extending ``Repository``.
+
+.. code-block:: bash
+
+    vendor/bin/typo3 make:repository my_extension
+
+**Prompts**
+
+*  Class name (e.g. ``BlogPostRepository``)
+*  Directory (default: ``Domain/Repository``)
+
+**Files written**
+
+*  ``Classes/Domain/Repository/<Name>.php``
+
+**Example output** (``BlogPostRepository.php``):
+
+.. code-block:: php
+
+    <?php
+    declare(strict_types=1);
+    namespace Vendor\Extension\Domain\Repository;
+
+    use TYPO3\CMS\Extbase\Persistence\Repository;
+
+    class BlogPostRepository extends Repository
+    {
     }
 
 ----

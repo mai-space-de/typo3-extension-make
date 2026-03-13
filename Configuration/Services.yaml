@@ -10,6 +10,27 @@ services:
   Maispace\Make\PackageResolver:
     public: true
 
+  Maispace\Make\Command\Component\InterfaceCommand:
+    tags:
+      - name: 'console.command'
+        command: 'make:interface'
+        description: 'Create a PHP interface'
+        schedulable: false
+
+  Maispace\Make\Command\Component\ModelCommand:
+    tags:
+      - name: 'console.command'
+        command: 'make:model'
+        description: 'Create an Extbase domain model'
+        schedulable: false
+
+  Maispace\Make\Command\Component\RepositoryCommand:
+    tags:
+      - name: 'console.command'
+        command: 'make:repository'
+        description: 'Create an Extbase domain repository'
+        schedulable: false
+
   Maispace\Make\Command\Component\BackendControllerCommand:
     tags:
       - name: 'console.command'
