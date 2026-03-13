@@ -56,6 +56,79 @@ make:command
      - *(extension key)*
      - Prefix used when proposing the CLI command name (e.g. ``my-ext:``).
 
+make:dataprocessor
+==================
+
+.. list-table::
+   :header-rows: 1
+   :widths: 40 20 40
+
+   * - Variable
+     - Default
+     - Description
+   * - ``MAKE_DATA_PROCESSOR_DIR``
+     - ``DataProcessing``
+     - Directory for the generated data processor class.
+
+make:dto
+========
+
+.. list-table::
+   :header-rows: 1
+   :widths: 40 20 40
+
+   * - Variable
+     - Default
+     - Description
+   * - ``MAKE_DTO_DIR``
+     - ``Dto``
+     - Directory for the generated DTO class.
+
+make:enum
+=========
+
+.. list-table::
+   :header-rows: 1
+   :widths: 40 20 40
+
+   * - Variable
+     - Default
+     - Description
+   * - ``MAKE_ENUM_DIR``
+     - ``Enum``
+     - Directory for the generated enum.
+   * - ``MAKE_ENUM_BACKING_TYPE``
+     - ``string``
+     - Backing type: ``string``, ``int``, or ``none`` (pure enum).
+
+make:factory
+============
+
+.. list-table::
+   :header-rows: 1
+   :widths: 40 20 40
+
+   * - Variable
+     - Default
+     - Description
+   * - ``MAKE_FACTORY_DIR``
+     - ``Factory``
+     - Directory for the generated factory class.
+
+make:hook
+=========
+
+.. list-table::
+   :header-rows: 1
+   :widths: 40 20 40
+
+   * - Variable
+     - Default
+     - Description
+   * - ``MAKE_HOOK_DIR``
+     - ``Hook``
+     - Directory for the generated hook class.
+
 make:controller
 ===============
 
@@ -200,6 +273,20 @@ make:repository
      - ``Domain/Repository``
      - Directory for the generated repository class.
 
+make:routeenhancer
+==================
+
+.. list-table::
+   :header-rows: 1
+   :widths: 40 20 40
+
+   * - Variable
+     - Default
+     - Description
+   * - ``MAKE_ROUTE_ENHANCER_DIR``
+     - ``Routing/Enhancer``
+     - Directory for the generated route enhancer class.
+
 make:service
 ============
 
@@ -228,6 +315,20 @@ make:trait
      - ``Trait``
      - Directory for the generated trait.
 
+make:typeconverter
+==================
+
+.. list-table::
+   :header-rows: 1
+   :widths: 40 20 40
+
+   * - Variable
+     - Default
+     - Description
+   * - ``MAKE_TYPE_CONVERTER_DIR``
+     - ``Property/TypeConverter``
+     - Directory for the generated type converter class.
+
 make:upgradewizard
 ==================
 
@@ -247,6 +348,34 @@ make:upgradewizard
    * - ``MAKE_UPGRADE_WIZARD_TITLE``
      - *(class name)*
      - Human-readable title returned by ``getTitle()``.
+
+make:utility
+============
+
+.. list-table::
+   :header-rows: 1
+   :widths: 40 20 40
+
+   * - Variable
+     - Default
+     - Description
+   * - ``MAKE_UTILITY_DIR``
+     - ``Utility``
+     - Directory for the generated utility class.
+
+make:validator
+==============
+
+.. list-table::
+   :header-rows: 1
+   :widths: 40 20 40
+
+   * - Variable
+     - Default
+     - Description
+   * - ``MAKE_VALIDATOR_DIR``
+     - ``Validator``
+     - Directory for the generated validator class.
 
 make:viewhelper
 ===============

@@ -14,17 +14,26 @@ This TYPO3 extension provides a collection of `bin/typo3 make:*` commands that l
 | `make:backendcontroller` | Backend controller (with route registration) |
 | `make:command` | Symfony console command |
 | `make:controller` | Extbase `ActionController` |
+| `make:dataprocessor` | TypoScript data processor |
+| `make:dto` | Data Transfer Object (DTO) |
+| `make:enum` | PHP enum (string-, int-backed, or pure) |
 | `make:event` | PSR-14 event class |
 | `make:eventlistener` | PSR-14 event listener (with service configuration) |
 | `make:exception` | PHP exception class |
+| `make:factory` | Factory class |
+| `make:hook` | TYPO3 hook class |
 | `make:interface` | PHP interface |
 | `make:migration` | Data migration class |
 | `make:middleware` | PSR-15 middleware (with `RequestMiddlewares.php` entry) |
 | `make:model` | Extbase domain model (`AbstractEntity`) |
 | `make:repository` | Extbase domain repository |
+| `make:routeenhancer` | Custom site-route enhancer |
 | `make:service` | Service class |
 | `make:trait` | PHP trait |
+| `make:typeconverter` | Extbase property type converter |
 | `make:upgradewizard` | TYPO3 upgrade wizard (with service configuration) |
+| `make:utility` | Utility class |
+| `make:validator` | Extbase validator |
 | `make:viewhelper` | Fluid `AbstractViewHelper` |
 
 ## Requirements
@@ -152,6 +161,78 @@ vendor/bin/typo3 make:interface my_extension
 
 Creates a PHP interface in the selected directory.
 
+### Create a DTO
+
+```bash
+vendor/bin/typo3 make:dto my_extension
+```
+
+Creates a Data Transfer Object in `Classes/Dto/`.
+
+### Create an enum
+
+```bash
+vendor/bin/typo3 make:enum my_extension
+```
+
+Creates a PHP enum (string-backed by default) in `Classes/Enum/`.
+
+### Create a factory
+
+```bash
+vendor/bin/typo3 make:factory my_extension
+```
+
+Creates a factory class in `Classes/Factory/`.
+
+### Create a hook class
+
+```bash
+vendor/bin/typo3 make:hook my_extension
+```
+
+Creates a TYPO3 hook class in `Classes/Hook/`.
+
+### Create a data processor
+
+```bash
+vendor/bin/typo3 make:dataprocessor my_extension
+```
+
+Creates a TypoScript `DataProcessorInterface` implementation in `Classes/DataProcessing/`.
+
+### Create a type converter
+
+```bash
+vendor/bin/typo3 make:typeconverter my_extension
+```
+
+Creates an Extbase property type converter in `Classes/Property/TypeConverter/`.
+
+### Create a route enhancer
+
+```bash
+vendor/bin/typo3 make:routeenhancer my_extension
+```
+
+Creates a custom site-route enhancer in `Classes/Routing/Enhancer/`.
+
+### Create a utility class
+
+```bash
+vendor/bin/typo3 make:utility my_extension
+```
+
+Creates a utility class in `Classes/Utility/`.
+
+### Create a validator
+
+```bash
+vendor/bin/typo3 make:validator my_extension
+```
+
+Creates an Extbase validator in `Classes/Validator/`.
+
 ### Create a backend controller
 
 ```bash
@@ -200,6 +281,16 @@ You can pre-set values so the commands don't ask for them interactively. All var
 | `MAKE_INTERFACE_DIR` | `make:interface` | _(empty)_ |
 | `MAKE_MODEL_DIR` | `make:model` | `Domain/Model` |
 | `MAKE_REPOSITORY_DIR` | `make:repository` | `Domain/Repository` |
+| `MAKE_DATA_PROCESSOR_DIR` | `make:dataprocessor` | `DataProcessing` |
+| `MAKE_DTO_DIR` | `make:dto` | `Dto` |
+| `MAKE_ENUM_DIR` | `make:enum` | `Enum` |
+| `MAKE_ENUM_BACKING_TYPE` | `make:enum` | `string` |
+| `MAKE_FACTORY_DIR` | `make:factory` | `Factory` |
+| `MAKE_HOOK_DIR` | `make:hook` | `Hook` |
+| `MAKE_ROUTE_ENHANCER_DIR` | `make:routeenhancer` | `Routing/Enhancer` |
+| `MAKE_TYPE_CONVERTER_DIR` | `make:typeconverter` | `Property/TypeConverter` |
+| `MAKE_UTILITY_DIR` | `make:utility` | `Utility` |
+| `MAKE_VALIDATOR_DIR` | `make:validator` | `Validator` |
 
 ## Development
 

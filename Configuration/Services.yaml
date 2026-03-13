@@ -10,6 +10,41 @@ services:
   Maispace\Make\PackageResolver:
     public: true
 
+  Maispace\Make\Command\Component\DataProcessorCommand:
+    tags:
+      - name: 'console.command'
+        command: 'make:dataprocessor'
+        description: 'Create a TypoScript data processor'
+        schedulable: false
+
+  Maispace\Make\Command\Component\DtoCommand:
+    tags:
+      - name: 'console.command'
+        command: 'make:dto'
+        description: 'Create a Data Transfer Object (DTO)'
+        schedulable: false
+
+  Maispace\Make\Command\Component\EnumCommand:
+    tags:
+      - name: 'console.command'
+        command: 'make:enum'
+        description: 'Create a PHP enum'
+        schedulable: false
+
+  Maispace\Make\Command\Component\FactoryCommand:
+    tags:
+      - name: 'console.command'
+        command: 'make:factory'
+        description: 'Create a factory class'
+        schedulable: false
+
+  Maispace\Make\Command\Component\HookCommand:
+    tags:
+      - name: 'console.command'
+        command: 'make:hook'
+        description: 'Create a TYPO3 hook class'
+        schedulable: false
+
   Maispace\Make\Command\Component\InterfaceCommand:
     tags:
       - name: 'console.command'
@@ -87,6 +122,13 @@ services:
         description: 'Create a PSR-15 middleware'
         schedulable: false
 
+  Maispace\Make\Command\Component\RouteEnhancerCommand:
+    tags:
+      - name: 'console.command'
+        command: 'make:routeenhancer'
+        description: 'Create a custom route enhancer'
+        schedulable: false
+
   Maispace\Make\Command\Component\ServiceCommand:
     tags:
       - name: 'console.command'
@@ -101,11 +143,32 @@ services:
         description: 'Create a PHP trait'
         schedulable: false
 
+  Maispace\Make\Command\Component\TypeConverterCommand:
+    tags:
+      - name: 'console.command'
+        command: 'make:typeconverter'
+        description: 'Create an Extbase property type converter'
+        schedulable: false
+
   Maispace\Make\Command\Component\UpgradeWizardCommand:
     tags:
       - name: 'console.command'
         command: 'make:upgradewizard'
         description: 'Create a TYPO3 upgrade wizard'
+        schedulable: false
+
+  Maispace\Make\Command\Component\UtilityCommand:
+    tags:
+      - name: 'console.command'
+        command: 'make:utility'
+        description: 'Create a utility class'
+        schedulable: false
+
+  Maispace\Make\Command\Component\ValidatorCommand:
+    tags:
+      - name: 'console.command'
+        command: 'make:validator'
+        description: 'Create an Extbase validator'
         schedulable: false
 
   Maispace\Make\Command\Component\ViewHelperCommand:
