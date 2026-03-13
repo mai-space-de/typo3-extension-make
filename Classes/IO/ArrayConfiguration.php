@@ -51,7 +51,11 @@ class ArrayConfiguration extends AbstractConfiguration
         }
         $configuration = require $configurationFile;
 
+        if (!is_array($configuration)) {
+            return [];
+        }
+
         /** @var array<string, mixed> $configuration */
-        return is_array($configuration) ? $configuration : [];
+        return $configuration;
     }
 }
