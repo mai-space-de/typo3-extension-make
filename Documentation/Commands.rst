@@ -89,6 +89,179 @@ Creates a **Symfony console command** and registers it in ``Services.yaml``.
 
 ----
 
+.. _cmd-dataprocessor:
+
+make:dataprocessor
+==================
+
+Creates a **TypoScript data processor** implementing ``DataProcessorInterface``.
+
+.. code-block:: bash
+
+    vendor/bin/typo3 make:dataprocessor my_extension
+
+**Prompts**
+
+*  Class name (e.g. ``MyDataProcessor``)
+*  Directory (default: ``DataProcessing``)
+
+**Files written**
+
+*  ``Classes/DataProcessing/<Name>.php``
+
+**Example output** (``MyDataProcessor.php``):
+
+.. code-block:: php
+
+    <?php
+    declare(strict_types=1);
+    namespace Vendor\Extension\DataProcessing;
+
+    use TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer;
+    use TYPO3\CMS\Frontend\ContentObject\DataProcessorInterface;
+
+    class MyDataProcessor implements DataProcessorInterface
+    {
+        public function process(
+            ContentObjectRenderer $cObj,
+            array $contentObjectConfiguration,
+            array $processorConfiguration,
+            array $processedData,
+        ): array {
+            // Process data here
+            return $processedData;
+        }
+    }
+
+.. note::
+
+   Reference the processor in TypoScript with:
+   ``10 = Vendor\Extension\DataProcessing\MyDataProcessor``
+
+----
+
+.. _cmd-dto:
+
+make:dto
+========
+
+Creates a **Data Transfer Object** (DTO) as a ``final`` class.
+
+.. code-block:: bash
+
+    vendor/bin/typo3 make:dto my_extension
+
+**Prompts**
+
+*  Class name (e.g. ``UserDto``)
+*  Directory (default: ``Dto``)
+
+**Files written**
+
+*  ``Classes/Dto/<Name>.php``
+
+**Example output** (``UserDto.php``):
+
+.. code-block:: php
+
+    <?php
+    declare(strict_types=1);
+    namespace Vendor\Extension\Dto;
+
+    final class UserDto
+    {
+        public function __construct(
+            // Add readonly properties here
+        ) {}
+    }
+
+----
+
+.. _cmd-enum:
+
+make:enum
+=========
+
+Creates a **PHP enum** (backed by ``string``, ``int``, or pure).
+
+.. code-block:: bash
+
+    vendor/bin/typo3 make:enum my_extension
+
+**Prompts**
+
+*  Backing type (``string`` / ``int`` / ``none``, default: ``string``)
+*  Class name (e.g. ``Status``)
+*  Directory (default: ``Enum``)
+
+**Files written**
+
+*  ``Classes/Enum/<Name>.php``
+
+**Example output** (``Status.php`` with string backing):
+
+.. code-block:: php
+
+    <?php
+    declare(strict_types=1);
+    namespace Vendor\Extension\Enum;
+
+    enum Status: string
+    {
+        // Add enum cases here
+    }
+
+----
+
+.. _cmd-factory:
+
+make:factory
+============
+
+Creates a **factory class** for constructing domain objects.
+
+.. code-block:: bash
+
+    vendor/bin/typo3 make:factory my_extension
+
+**Prompts**
+
+*  Class name (e.g. ``UserFactory``)
+*  Directory (default: ``Factory``)
+
+**Files written**
+
+*  ``Classes/Factory/<Name>.php``
+
+----
+
+.. _cmd-hook:
+
+make:hook
+=========
+
+Creates a **TYPO3 hook class**.
+
+.. code-block:: bash
+
+    vendor/bin/typo3 make:hook my_extension
+
+**Prompts**
+
+*  Class name (e.g. ``PageHook``)
+*  Directory (default: ``Hook``)
+
+**Files written**
+
+*  ``Classes/Hook/<Name>.php``
+
+.. warning::
+
+   Hooks are deprecated since TYPO3 v10 and will be removed in future versions.
+   Prefer PSR-14 events via ``make:event`` / ``make:eventlistener`` where possible.
+
+----
+
 .. _cmd-controller:
 
 make:controller
@@ -246,6 +419,41 @@ Creates a **PHP exception class**.
 
 ----
 
+.. _cmd-interface:
+
+make:interface
+==============
+
+Creates a **PHP interface**.
+
+.. code-block:: bash
+
+    vendor/bin/typo3 make:interface my_extension
+
+**Prompts**
+
+*  Interface name (e.g. ``UserRepositoryInterface``)
+*  Directory (leave empty to place the interface directly under ``Classes/``)
+
+**Files written**
+
+*  ``Classes/<Directory>/<Name>.php``
+
+**Example output** (``UserRepositoryInterface.php``):
+
+.. code-block:: php
+
+    <?php
+    declare(strict_types=1);
+    namespace Vendor\Extension\Domain\Repository;
+
+    interface UserRepositoryInterface
+    {
+        // Add interface methods here
+    }
+
+----
+
 .. _cmd-migration:
 
 make:migration
@@ -345,6 +553,136 @@ Creates a **PSR-15 middleware** and registers it in ``Configuration/RequestMiddl
 
 ----
 
+.. _cmd-model:
+
+make:model
+==========
+
+Creates an **Extbase domain model** extending ``AbstractEntity``.
+
+.. code-block:: bash
+
+    vendor/bin/typo3 make:model my_extension
+
+**Prompts**
+
+*  Class name (e.g. ``BlogPost``)
+*  Directory (default: ``Domain/Model``)
+
+**Files written**
+
+*  ``Classes/Domain/Model/<Name>.php``
+
+**Example output** (``BlogPost.php``):
+
+.. code-block:: php
+
+    <?php
+    declare(strict_types=1);
+    namespace Vendor\Extension\Domain\Model;
+
+    use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
+
+    class BlogPost extends AbstractEntity
+    {
+        // Add model properties here
+    }
+
+----
+
+.. _cmd-repository:
+
+make:repository
+===============
+
+Creates an **Extbase domain repository** extending ``Repository``.
+
+.. code-block:: bash
+
+    vendor/bin/typo3 make:repository my_extension
+
+**Prompts**
+
+*  Class name (e.g. ``BlogPostRepository``)
+*  Directory (default: ``Domain/Repository``)
+
+**Files written**
+
+*  ``Classes/Domain/Repository/<Name>.php``
+
+**Example output** (``BlogPostRepository.php``):
+
+.. code-block:: php
+
+    <?php
+    declare(strict_types=1);
+    namespace Vendor\Extension\Domain\Repository;
+
+    use TYPO3\CMS\Extbase\Persistence\Repository;
+
+    class BlogPostRepository extends Repository
+    {
+    }
+
+----
+
+.. _cmd-routeenhancer:
+
+make:routeenhancer
+==================
+
+Creates a **custom site-route enhancer** implementing ``EnhancerInterface``.
+
+.. code-block:: bash
+
+    vendor/bin/typo3 make:routeenhancer my_extension
+
+**Prompts**
+
+*  Class name (e.g. ``BlogRouteEnhancer``)
+*  Directory (default: ``Routing/Enhancer``)
+
+**Files written**
+
+*  ``Classes/Routing/Enhancer/<Name>.php``
+
+**Example output** (``BlogRouteEnhancer.php``):
+
+.. code-block:: php
+
+    <?php
+    declare(strict_types=1);
+    namespace Vendor\Extension\Routing\Enhancer;
+
+    use TYPO3\CMS\Core\Routing\Enhancer\EnhancerInterface;
+    use TYPO3\CMS\Core\Routing\RouteCollection;
+
+    class BlogRouteEnhancer implements EnhancerInterface
+    {
+        public function __construct(protected readonly array $configuration = []) {}
+
+        public function enhanceForMatching(RouteCollection $collection): void
+        {
+            // Add custom routes to the collection
+        }
+
+        public function enhanceForGeneration(RouteCollection $collection, array $originalParameters): void
+        {
+            // Enhance routes for URL generation
+        }
+    }
+
+.. note::
+
+   Register the enhancer in ``ext_localconf.php``::
+
+       $GLOBALS['TYPO3_CONF_VARS']['SYS']['routing']['enhancers']['MyEnhancer']
+           = \Vendor\Extension\Routing\Enhancer\BlogRouteEnhancer::class;
+
+   Then reference it by type in your site configuration YAML.
+
+----
+
 .. _cmd-service:
 
 make:service
@@ -411,6 +749,122 @@ Creates a **PHP trait**.
     trait HasTimestampsTrait
     {
         // Add trait methods here
+    }
+
+----
+
+.. _cmd-utility:
+
+make:utility
+============
+
+Creates a **utility class** for grouping related static or stateless helper methods.
+
+.. code-block:: bash
+
+    vendor/bin/typo3 make:utility my_extension
+
+**Prompts**
+
+*  Class name (e.g. ``StringUtility``)
+*  Directory (default: ``Utility``)
+
+**Files written**
+
+*  ``Classes/Utility/<Name>.php``
+
+----
+
+.. _cmd-validator:
+
+make:validator
+==============
+
+Creates an **Extbase validator** extending ``AbstractValidator``.
+
+.. code-block:: bash
+
+    vendor/bin/typo3 make:validator my_extension
+
+**Prompts**
+
+*  Class name (e.g. ``NotEmptyValidator``)
+*  Directory (default: ``Validator``)
+
+**Files written**
+
+*  ``Classes/Validator/<Name>.php``
+
+**Example output** (``NotEmptyValidator.php``):
+
+.. code-block:: php
+
+    <?php
+    declare(strict_types=1);
+    namespace Vendor\Extension\Validator;
+
+    use TYPO3\CMS\Extbase\Validation\Validator\AbstractValidator;
+
+    class NotEmptyValidator extends AbstractValidator
+    {
+        protected function isValid(mixed $value): void
+        {
+            // Add validation logic here
+            // Use $this->addError('message', 1234567890) to add errors
+        }
+    }
+
+----
+
+.. _cmd-typeconverter:
+
+make:typeconverter
+==================
+
+Creates an **Extbase property type converter** (``PropertyMapper``) extending ``AbstractTypeConverter``.
+
+.. code-block:: bash
+
+    vendor/bin/typo3 make:typeconverter my_extension
+
+**Prompts**
+
+*  Class name (e.g. ``StringToDateTimeConverter``)
+*  Directory (default: ``Property/TypeConverter``)
+
+**Files written**
+
+*  ``Classes/Property/TypeConverter/<Name>.php``
+
+**Example output** (``StringToDateTimeConverter.php``):
+
+.. code-block:: php
+
+    <?php
+    declare(strict_types=1);
+    namespace Vendor\Extension\Property\TypeConverter;
+
+    use TYPO3\CMS\Extbase\Property\PropertyMappingConfigurationInterface;
+    use TYPO3\CMS\Extbase\Property\TypeConverter\AbstractTypeConverter;
+
+    class StringToDateTimeConverter extends AbstractTypeConverter
+    {
+        /**
+         * @var array<string>
+         */
+        protected array $sourceTypes = ['string'];
+        protected string $targetType = '';
+        protected int $priority = 10;
+
+        public function convertFrom(
+            mixed $source,
+            string $targetType,
+            array $convertedChildProperties = [],
+            ?PropertyMappingConfigurationInterface $configuration = null,
+        ): mixed {
+            // Convert $source to $targetType here
+            return null;
+        }
     }
 
 ----
