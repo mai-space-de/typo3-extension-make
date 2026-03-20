@@ -2,9 +2,9 @@
 
 declare(strict_types = 1);
 
-namespace Maispace\Make\Tests\Unit\Component;
+namespace Maispace\MaiMake\Tests\Unit\Component;
 
-use Maispace\Make\Component\Factory;
+use Maispace\MaiMake\Component\Factory;
 use PHPUnit\Framework\TestCase;
 
 class FactoryTest extends TestCase

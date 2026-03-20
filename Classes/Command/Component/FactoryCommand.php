@@ -2,10 +2,10 @@
 
 declare(strict_types = 1);
 
-namespace Maispace\Make\Command\Component;
+namespace Maispace\MaiMake\Command\Component;
 
-use Maispace\Make\Component\ComponentInterface;
-use Maispace\Make\Component\Factory;
+use Maispace\MaiMake\Component\ComponentInterface;
+use Maispace\MaiMake\Component\Factory;
 
 /**
  * Command for creating a new factory class component.

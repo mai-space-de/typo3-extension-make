@@ -2,9 +2,9 @@
 
 declare(strict_types = 1);
 
-namespace Maispace\Make\Tests\Unit\Component;
+namespace Maispace\MaiMake\Tests\Unit\Component;
 
-use Maispace\Make\Component\Event;
+use Maispace\MaiMake\Component\Event;
 use PHPUnit\Framework\TestCase;
 
 class EventTest extends TestCase

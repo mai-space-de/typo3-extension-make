@@ -1,5 +1,5 @@
 {
-    "name": "maispace/make",
+    "name": "maispace/mai-make",
     "description": "Extended TYPO3 make/kickstarter CLI tool with make commands for controllers, events, exceptions, migrations, traits, viewhelpers, services, middlewares and upgrade wizards",
     "type": "typo3-cms-extension",
     "license": "GPL-2.0-or-later",
@@ -23,17 +23,17 @@
     },
     "autoload": {
         "psr-4": {
-            "Maispace\\Make\\": "Classes"
+            "Maispace\\MaiMake\\": "Classes"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Maispace\\Make\\Tests\\": "Tests"
+            "Maispace\\MaiMake\\Tests\\": "Tests"
         }
     },
     "extra": {
         "typo3/cms": {
-            "extension-key": "maispace_make"
+            "extension-key": "mai_make"
         },
         "branch-alias": {
             "dev-main": "1.0.x-dev"

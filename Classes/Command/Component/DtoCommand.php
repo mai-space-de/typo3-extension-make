@@ -2,10 +2,10 @@
 
 declare(strict_types = 1);
 
-namespace Maispace\Make\Command\Component;
+namespace Maispace\MaiMake\Command\Component;
 
-use Maispace\Make\Component\ComponentInterface;
-use Maispace\Make\Component\Dto;
+use Maispace\MaiMake\Component\ComponentInterface;
+use Maispace\MaiMake\Component\Dto;
 
 /**
  * Command for creating a new Data Transfer Object component.

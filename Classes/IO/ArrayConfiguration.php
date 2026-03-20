@@ -2,7 +2,7 @@
 
 declare(strict_types = 1);
 
-namespace Maispace\Make\IO;
+namespace Maispace\MaiMake\IO;
 
 use TYPO3\CMS\Core\Utility\ArrayUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;

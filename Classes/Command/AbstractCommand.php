@@ -2,12 +2,12 @@
 
 declare(strict_types = 1);
 
-namespace Maispace\Make\Command;
+namespace Maispace\MaiMake\Command;
 
-use Maispace\Make\Environment\Variables;
-use Maispace\Make\Exception\EmptyAnswerException;
-use Maispace\Make\Exception\InvalidPackageNameException;
-use Maispace\Make\PackageResolver;
+use Maispace\MaiMake\Environment\Variables;
+use Maispace\MaiMake\Exception\EmptyAnswerException;
+use Maispace\MaiMake\Exception\InvalidPackageNameException;
+use Maispace\MaiMake\PackageResolver;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -110,7 +110,7 @@ abstract class AbstractCommand extends Command
         $packages = $this->packageResolver->getAvailablePackages();
         /** @var array<string, string> $choices */
         $choices = array_reduce($packages, static function (array $result, PackageInterface $package): array {
-            if ($package->getValueFromComposerManifest('type') === 'typo3-cms-extension' && $package->getPackageKey() !== 'maispace_make') {
+            if ($package->getValueFromComposerManifest('type') === 'typo3-cms-extension' && $package->getPackageKey() !== 'mai_make') {
                 $extensionKey = $package->getPackageKey();
                 $result[$extensionKey] = $extensionKey;
             }

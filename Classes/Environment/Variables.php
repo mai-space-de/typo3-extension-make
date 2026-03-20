@@ -2,7 +2,7 @@
 
 declare(strict_types = 1);
 
-namespace Maispace\Make\Environment;
+namespace Maispace\MaiMake\Environment;
 
 /**
  * Check and access environment variables.

@@ -2,10 +2,10 @@
 
 declare(strict_types = 1);
 
-namespace Maispace\Make\Command\Component;
+namespace Maispace\MaiMake\Command\Component;
 
-use Maispace\Make\Component\ComponentInterface;
-use Maispace\Make\Component\Hook;
+use Maispace\MaiMake\Component\ComponentInterface;
+use Maispace\MaiMake\Component\Hook;
 
 /**
  * Command for creating a new TYPO3 hook class component.

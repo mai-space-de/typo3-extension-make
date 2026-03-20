@@ -2,9 +2,9 @@
 
 declare(strict_types = 1);
 
-namespace Maispace\Make\Tests\Unit\Component;
+namespace Maispace\MaiMake\Tests\Unit\Component;
 
-use Maispace\Make\Component\UpgradeWizard;
+use Maispace\MaiMake\Component\UpgradeWizard;
 use PHPUnit\Framework\TestCase;
 
 class UpgradeWizardTest extends TestCase

@@ -2,9 +2,9 @@
 
 declare(strict_types = 1);
 
-namespace Maispace\Make\Tests\Unit\Component;
+namespace Maispace\MaiMake\Tests\Unit\Component;
 
-use Maispace\Make\Component\ExtbaseRepository;
+use Maispace\MaiMake\Component\ExtbaseRepository;
 use PHPUnit\Framework\TestCase;
 
 class ExtbaseRepositoryTest extends TestCase

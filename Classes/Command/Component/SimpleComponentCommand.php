@@ -2,15 +2,15 @@
 
 declare(strict_types = 1);
 
-namespace Maispace\Make\Command\Component;
+namespace Maispace\MaiMake\Command\Component;
 
-use Maispace\Make\Command\AbstractCommand;
-use Maispace\Make\Component\ComponentInterface;
-use Maispace\Make\Component\ServiceConfigurationComponentInterface;
-use Maispace\Make\Exception\AbortCommandException;
-use Maispace\Make\Exception\InvalidPackageException;
-use Maispace\Make\IO\ArrayConfiguration;
-use Maispace\Make\IO\ServiceConfiguration;
+use Maispace\MaiMake\Command\AbstractCommand;
+use Maispace\MaiMake\Component\ComponentInterface;
+use Maispace\MaiMake\Component\ServiceConfigurationComponentInterface;
+use Maispace\MaiMake\Exception\AbortCommandException;
+use Maispace\MaiMake\Exception\InvalidPackageException;
+use Maispace\MaiMake\IO\ArrayConfiguration;
+use Maispace\MaiMake\IO\ServiceConfiguration;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;

@@ -2,9 +2,9 @@
 
 declare(strict_types = 1);
 
-namespace Maispace\Make\Tests\Unit\Component;
+namespace Maispace\MaiMake\Tests\Unit\Component;
 
-use Maispace\Make\Component\EventListener;
+use Maispace\MaiMake\Component\EventListener;
 use PHPUnit\Framework\TestCase;
 
 class EventListenerTest extends TestCase

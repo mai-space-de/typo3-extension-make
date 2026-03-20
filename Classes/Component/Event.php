@@ -2,7 +2,7 @@
 
 declare(strict_types = 1);
 
-namespace Maispace\Make\Component;
+namespace Maispace\MaiMake\Component;
 
 /**
  * PSR-14 event component.

@@ -19,7 +19,7 @@ $EM_CONF[$_EXTKEY] = [
     ],
     'autoload' => [
         'psr-4' => [
-            'Maispace\\Make\\' => 'Classes/',
+            'Maispace\\MaiMake\\' => 'Classes/',
         ],
     ],
 ];

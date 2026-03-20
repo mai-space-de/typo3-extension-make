@@ -2,10 +2,10 @@
 
 declare(strict_types = 1);
 
-namespace Maispace\Make\Command\Component;
+namespace Maispace\MaiMake\Command\Component;
 
-use Maispace\Make\Component\ComponentInterface;
-use Maispace\Make\Component\DataProcessor;
+use Maispace\MaiMake\Component\ComponentInterface;
+use Maispace\MaiMake\Component\DataProcessor;
 
 /**
  * Command for creating a new TypoScript data processor component.

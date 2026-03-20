@@ -2,9 +2,9 @@
 
 declare(strict_types = 1);
 
-namespace Maispace\Make\Tests\Unit\Component;
+namespace Maispace\MaiMake\Tests\Unit\Component;
 
-use Maispace\Make\Component\TraitComponent;
+use Maispace\MaiMake\Component\TraitComponent;
 use PHPUnit\Framework\TestCase;
 
 class TraitComponentTest extends TestCase
