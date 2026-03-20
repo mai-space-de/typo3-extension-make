@@ -2,7 +2,7 @@
 
 declare(strict_types = 1);
 
-namespace Maispace\Make;
+namespace Maispace\MaiMake;
 
 use TYPO3\CMS\Core\Package\Exception\UnknownPackageException;
 use TYPO3\CMS\Core\Package\PackageInterface;
