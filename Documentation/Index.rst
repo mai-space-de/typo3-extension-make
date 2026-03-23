@@ -7,10 +7,10 @@ Maispace Make
 ============
 
 :Extension key:
-    maispace_make
+    mai_make
 
 :Package name:
-    maispace/make
+    maispace/mai-make
 
 :Version:
     1.0.0

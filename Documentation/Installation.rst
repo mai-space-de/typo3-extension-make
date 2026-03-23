@@ -19,7 +19,7 @@ Run the following command in your TYPO3 project root:
 
 .. code-block:: bash
 
-    composer require maispace/make
+    composer require maispace/mai-make
 
 The extension is activated automatically when installed via Composer.
 

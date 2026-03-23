@@ -44,7 +44,7 @@ This TYPO3 extension provides a collection of `bin/typo3 make:*` commands that l
 ## Installation
 
 ```bash
-composer require maispace/make
+composer require maispace/mai-make
 ```
 
 The extension is active automatically via composer. All commands are available via the TYPO3 CLI:
