@@ -160,7 +160,4 @@ jobs:
           COMPOSER_ROOT_VERSION: "1.0.0"
 
       - name: Run TypoScript lint
-        run: |
-          if [ -d Configuration/TypoScript ]; then
-            vendor/bin/typoscript-lint --fail-on-warnings -c typoscript-lint.yml Configuration/TypoScript/
-          fi
+        run: composer check:typoscript
