@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <rect fill="currentColor" x="8" y="12" width="48" height="40" rx="3"/>
+  <g opacity=".4"><rect fill="currentColor" x="8" y="12" width="48" height="8" rx="3"/></g>
+  <circle fill="currentColor" cx="16" cy="16" r="2"/>
+  <circle fill="currentColor" cx="23" cy="16" r="2"/>
+  <circle fill="currentColor" cx="30" cy="16" r="2"/>
+  <path fill="var(--icon-color-accent, #ff8700)" d="M14 28l6 6-6 6 2 2 8-8-8-8-2 2zm12 10h16v3H26z"/>
+</svg>
