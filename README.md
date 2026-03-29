@@ -5,7 +5,7 @@
 
 Extended TYPO3 make/kickstarter CLI tool. Adds `make:*` commands for rapid scaffolding. Bundles `helhum/typo3-console` for enhanced CLI capabilities and `cms-t3editor` for in-backend code editing. Development-only — should not be installed in production.
 
-**Requires:** TYPO3 13.4 LTS / 14.0 · PHP 8.2+
+**Requires:** TYPO3 13.4 LTS / 14.1 · PHP 8.2+
 
 ---
 
