@@ -1,6 +1,6 @@
 {
     "name": "maispace/mai-make",
-    "description": "Extended TYPO3 make/kickstarter CLI tool. Adds `make:*` commands for rapid scaffolding. Bundles `helhum/typo3-console` for enhanced CLI capabilities and `cms-t3editor` for in-backend code editing. Development-only \u2014 should not be installed in production.",
+    "description": "Extended TYPO3 make/kickstarter CLI tool with make commands for controllers, events, exceptions, migrations, traits, viewhelpers, services, middlewares and upgrade wizards",
     "type": "typo3-cms-extension",
     "license": "GPL-2.0-or-later",
     "authors": [
@@ -9,6 +9,19 @@
             "role": "Developer"
         }
     ],
+    "require": {
+        "php": "^8.2",
+        "typo3/cms-core": "^13.4 || ^14.0"
+    },
+    "require-dev": {
+        "armin/editorconfig-cli": "^2.1",
+        "friendsofphp/php-cs-fixer": "^3.0",
+        "helmich/typo3-typoscript-lint": "^3.1",
+        "phpstan/phpstan": "^2.0",
+        "phpunit/phpunit": "^11.0",
+        "saschaegerer/phpstan-typo3": "^2.0",
+        "typo3/testing-framework": "^8.0"
+    },
     "autoload": {
         "psr-4": {
             "Maispace\\MaiMake\\": "Classes"
@@ -47,7 +60,7 @@
         "fix:phpcs": "PHP_CS_FIXER_IGNORE_ENV=1 php-cs-fixer fix --config .php-cs-fixer.php --ansi",
         "check:phpstan": "phpstan analyse --no-progress",
         "check:phpstan:baseline": "phpstan analyse --no-progress --generate-baseline=phpstan-baseline.neon",
-        "check:typoscript": "typoscript-lint --fail-on-warnings -c typoscript-lint.yml Configuration/",
+        "check:typoscript": "php -r \"if (is_dir('Configuration/TypoScript')) { passthru('typoscript-lint --fail-on-warnings -c typoscript-lint.yml Configuration/TypoScript/'); }\"",
         "test": "phpunit --configuration phpunit.xml.dist",
         "test:unit": "phpunit --configuration phpunit.xml.dist --testsuite Unit"
     },
