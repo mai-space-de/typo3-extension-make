@@ -10,62 +10,6 @@ services:
   Maispace\MaiMake\PackageResolver:
     public: true
 
-  Maispace\MaiMake\Command\Component\DataProcessorCommand:
-    tags:
-      - name: 'console.command'
-        command: 'make:dataprocessor'
-        description: 'Create a TypoScript data processor'
-        schedulable: false
-
-  Maispace\MaiMake\Command\Component\DtoCommand:
-    tags:
-      - name: 'console.command'
-        command: 'make:dto'
-        description: 'Create a Data Transfer Object (DTO)'
-        schedulable: false
-
-  Maispace\MaiMake\Command\Component\EnumCommand:
-    tags:
-      - name: 'console.command'
-        command: 'make:enum'
-        description: 'Create a PHP enum'
-        schedulable: false
-
-  Maispace\MaiMake\Command\Component\FactoryCommand:
-    tags:
-      - name: 'console.command'
-        command: 'make:factory'
-        description: 'Create a factory class'
-        schedulable: false
-
-  Maispace\MaiMake\Command\Component\HookCommand:
-    tags:
-      - name: 'console.command'
-        command: 'make:hook'
-        description: 'Create a TYPO3 hook class'
-        schedulable: false
-
-  Maispace\MaiMake\Command\Component\InterfaceCommand:
-    tags:
-      - name: 'console.command'
-        command: 'make:interface'
-        description: 'Create a PHP interface'
-        schedulable: false
-
-  Maispace\MaiMake\Command\Component\ModelCommand:
-    tags:
-      - name: 'console.command'
-        command: 'make:model'
-        description: 'Create an Extbase domain model'
-        schedulable: false
-
-  Maispace\MaiMake\Command\Component\RepositoryCommand:
-    tags:
-      - name: 'console.command'
-        command: 'make:repository'
-        description: 'Create an Extbase domain repository'
-        schedulable: false
-
   Maispace\MaiMake\Command\Component\BackendControllerCommand:
     tags:
       - name: 'console.command'
@@ -85,6 +29,27 @@ services:
       - name: 'console.command'
         command: 'make:controller'
         description: 'Create an Extbase action controller'
+        schedulable: false
+
+  Maispace\MaiMake\Command\Component\DataProcessorCommand:
+    tags:
+      - name: 'console.command'
+        command: 'make:dataprocessor'
+        description: 'Create a TypoScript data processor'
+        schedulable: false
+
+  Maispace\MaiMake\Command\Component\DtoCommand:
+    tags:
+      - name: 'console.command'
+        command: 'make:dto'
+        description: 'Create a Data Transfer Object (DTO)'
+        schedulable: false
+
+  Maispace\MaiMake\Command\Component\EnumCommand:
+    tags:
+      - name: 'console.command'
+        command: 'make:enum'
+        description: 'Create a PHP enum'
         schedulable: false
 
   Maispace\MaiMake\Command\Component\EventCommand:
@@ -108,11 +73,25 @@ services:
         description: 'Create a PHP exception class'
         schedulable: false
 
-  Maispace\MaiMake\Command\Component\MigrationCommand:
+  Maispace\MaiMake\Command\Component\FactoryCommand:
     tags:
       - name: 'console.command'
-        command: 'make:migration'
-        description: 'Create a data migration class'
+        command: 'make:factory'
+        description: 'Create a factory class'
+        schedulable: false
+
+  Maispace\MaiMake\Command\Component\HookCommand:
+    tags:
+      - name: 'console.command'
+        command: 'make:hook'
+        description: 'Create a TYPO3 hook class'
+        schedulable: false
+
+  Maispace\MaiMake\Command\Component\InterfaceCommand:
+    tags:
+      - name: 'console.command'
+        command: 'make:interface'
+        description: 'Create a PHP interface'
         schedulable: false
 
   Maispace\MaiMake\Command\Component\MiddlewareCommand:
@@ -120,6 +99,27 @@ services:
       - name: 'console.command'
         command: 'make:middleware'
         description: 'Create a PSR-15 middleware'
+        schedulable: false
+
+  Maispace\MaiMake\Command\Component\MigrationCommand:
+    tags:
+      - name: 'console.command'
+        command: 'make:migration'
+        description: 'Create a data migration class'
+        schedulable: false
+
+  Maispace\MaiMake\Command\Component\ModelCommand:
+    tags:
+      - name: 'console.command'
+        command: 'make:model'
+        description: 'Create an Extbase domain model'
+        schedulable: false
+
+  Maispace\MaiMake\Command\Component\RepositoryCommand:
+    tags:
+      - name: 'console.command'
+        command: 'make:repository'
+        description: 'Create an Extbase domain repository'
         schedulable: false
 
   Maispace\MaiMake\Command\Component\RouteEnhancerCommand:
