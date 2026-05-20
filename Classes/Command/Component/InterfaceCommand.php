@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Maispace\MaiMake\Command\Component;
 
@@ -27,14 +27,14 @@ class InterfaceCommand extends SimpleComponentCommand
                 $this->askString(
                     'Enter the name of the interface (e.g. "UserRepositoryInterface")',
                     null,
-                    [$this, 'answerRequired']
-                )
+                    [$this, 'answerRequired'],
+                ),
             )
             ->setDirectory(
                 $this->askString(
                     'Enter the directory, the interface should be placed in',
-                    $this->getProposalFromEnvironment('INTERFACE_DIR', '')
-                )
+                    $this->getProposalFromEnvironment('INTERFACE_DIR', ''),
+                ),
             );
     }
 

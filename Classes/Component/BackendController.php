@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Maispace\MaiMake\Component;
 
@@ -22,7 +22,7 @@ class BackendController extends AbstractComponent implements ArrayConfigurationC
     {
         return 'tx_' . trim($prefix, '_') . '_' . mb_strtolower(
             trim(str_replace('Controller', '', preg_replace('/(?<=\\w)([A-Z])/', '_\\1', $this->name) ?? ''), '_'),
-            'utf-8'
+            'utf-8',
         );
     }
 
@@ -37,7 +37,7 @@ class BackendController extends AbstractComponent implements ArrayConfigurationC
     {
         return mb_strtolower(
             '/' . trim(str_replace('_', '/', str_replace('tx_', '', $this->routeIdentifier)), '/)'),
-            'utf-8'
+            'utf-8',
         );
     }
 
@@ -72,7 +72,7 @@ class BackendController extends AbstractComponent implements ArrayConfigurationC
                 'NAMESPACE' => $this->getNamespace(),
                 'NAME'      => $this->name,
                 'METHOD'    => $this->methodName ?: '__invoke',
-            ]
+            ],
         );
     }
 

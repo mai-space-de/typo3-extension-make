@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Maispace\MaiMake\Component;
 
@@ -51,7 +51,7 @@ class UpgradeWizard extends AbstractComponent implements ServiceConfigurationCom
                 'NAME'       => $this->name,
                 'IDENTIFIER' => $this->identifier,
                 'TITLE'      => str_replace('\'', '\\\'', $this->title ?: $this->name),
-            ]
+            ],
         );
     }
 

@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Maispace\MaiMake\Command\Component;
 
@@ -27,14 +27,14 @@ class TypeConverterCommand extends SimpleComponentCommand
                 $this->askString(
                     'Enter the name of the type converter (e.g. "StringToDateTimeConverter")',
                     null,
-                    [$this, 'answerRequired']
-                )
+                    [$this, 'answerRequired'],
+                ),
             )
             ->setDirectory(
                 $this->askString(
                     'Enter the directory, the type converter should be placed in',
-                    $this->getProposalFromEnvironment('TYPE_CONVERTER_DIR', 'Property/TypeConverter')
-                )
+                    $this->getProposalFromEnvironment('TYPE_CONVERTER_DIR', 'Property/TypeConverter'),
+                ),
             );
     }
 

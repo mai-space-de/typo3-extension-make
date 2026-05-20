@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Maispace\MaiMake\Command\Component;
 
@@ -27,14 +27,14 @@ class UtilityCommand extends SimpleComponentCommand
                 $this->askString(
                     'Enter the name of the utility class (e.g. "StringUtility")',
                     null,
-                    [$this, 'answerRequired']
-                )
+                    [$this, 'answerRequired'],
+                ),
             )
             ->setDirectory(
                 $this->askString(
                     'Enter the directory, the utility class should be placed in',
-                    $this->getProposalFromEnvironment('UTILITY_DIR', 'Utility')
-                )
+                    $this->getProposalFromEnvironment('UTILITY_DIR', 'Utility'),
+                ),
             );
     }
 

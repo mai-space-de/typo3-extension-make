@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Maispace\MaiMake\Tests\Unit\Component;
 
@@ -16,7 +16,7 @@ class AbstractComponentTest extends TestCase
      */
     public function psr4PrefixIsSanitized(string $psr4Prefix): void
     {
-        $component = new class($psr4Prefix) extends AbstractComponent {
+        $component = new class ($psr4Prefix) extends AbstractComponent {
             public function __toString(): string
             {
                 return '';
@@ -55,7 +55,7 @@ class AbstractComponentTest extends TestCase
      */
     public function nameIsSanitized(string $name): void
     {
-        $component = new class('Vendor/Extension') extends AbstractComponent {
+        $component = new class ('Vendor/Extension') extends AbstractComponent {
             public function __toString(): string
             {
                 return '';
@@ -91,7 +91,7 @@ class AbstractComponentTest extends TestCase
      */
     public function directoryIsSanitized(): void
     {
-        $component = new class('Vendor/Extension') extends AbstractComponent {
+        $component = new class ('Vendor/Extension') extends AbstractComponent {
             public function __toString(): string
             {
                 return '';
@@ -109,7 +109,7 @@ class AbstractComponentTest extends TestCase
      */
     public function namespaceIsSanitized(string $directory, string $expectedNamespace): void
     {
-        $component = new class('Vendor\\Extension\\') extends AbstractComponent {
+        $component = new class ('Vendor\\Extension\\') extends AbstractComponent {
             public function __toString(): string
             {
                 return '';
@@ -152,7 +152,7 @@ class AbstractComponentTest extends TestCase
      */
     public function classNameIsSanitized(string $name, string $directory, string $expectedClassName): void
     {
-        $component = new class('Vendor\\Extension\\') extends AbstractComponent {
+        $component = new class ('Vendor\\Extension\\') extends AbstractComponent {
             public function __toString(): string
             {
                 return '';
@@ -192,9 +192,9 @@ class AbstractComponentTest extends TestCase
     public function getIdentifierProposalTest(
         string $psr4Prefix,
         string $name,
-        string $expectedIdentifier
+        string $expectedIdentifier,
     ): void {
-        $component = new class($psr4Prefix) extends AbstractComponent {
+        $component = new class ($psr4Prefix) extends AbstractComponent {
             public function __toString(): string
             {
                 return '';
@@ -235,9 +235,9 @@ class AbstractComponentTest extends TestCase
     public function getIdentifierProposalWithStaticPrefixTest(
         string $psr4Prefix,
         string $name,
-        string $expectedIdentifier
+        string $expectedIdentifier,
     ): void {
-        $component = new class($psr4Prefix) extends AbstractComponent {
+        $component = new class ($psr4Prefix) extends AbstractComponent {
             public function __toString(): string
             {
                 return '';

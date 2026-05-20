@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Maispace\MaiMake\Command\Component;
 
@@ -27,14 +27,14 @@ class FactoryCommand extends SimpleComponentCommand
                 $this->askString(
                     'Enter the name of the factory (e.g. "UserFactory")',
                     null,
-                    [$this, 'answerRequired']
-                )
+                    [$this, 'answerRequired'],
+                ),
             )
             ->setDirectory(
                 $this->askString(
                     'Enter the directory, the factory should be placed in',
-                    $this->getProposalFromEnvironment('FACTORY_DIR', 'Factory')
-                )
+                    $this->getProposalFromEnvironment('FACTORY_DIR', 'Factory'),
+                ),
             );
     }
 

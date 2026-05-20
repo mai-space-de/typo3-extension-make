@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Maispace\MaiMake\Command\Component;
 
@@ -37,29 +37,29 @@ class BackendControllerCommand extends SimpleComponentCommand
                 $this->askString(
                     'Enter the name of the backend controller (e.g. "AwesomeController")',
                     null,
-                    [$this, 'answerRequired']
-                )
+                    [$this, 'answerRequired'],
+                ),
             )
             ->setDirectory(
                 $this->askString(
                     'Enter the directory, the backend controller should be placed in',
-                    $this->getProposalFromEnvironment('BACKEND_CONTROLLER_DIR', 'Backend/Controller')
-                )
+                    $this->getProposalFromEnvironment('BACKEND_CONTROLLER_DIR', 'Backend/Controller'),
+                ),
             )
             ->setRouteIdentifier(
                 $this->askString(
                     'Enter the route identifier for the backend controller',
-                    $backendController->getRouteIdentifierProposal($this->getProposalFromEnvironment('BACKEND_CONTROLLER_PREFIX', $this->extensionKey))
-                )
+                    $backendController->getRouteIdentifierProposal($this->getProposalFromEnvironment('BACKEND_CONTROLLER_PREFIX', $this->extensionKey)),
+                ),
             )
             ->setRoutePath(
                 $this->askString(
                     'Enter the route path of the backend controller?',
-                    $backendController->getRoutePathProposal()
-                )
+                    $backendController->getRoutePathProposal(),
+                ),
             )
             ->setMethodName(
-                $this->askString('Enter the method, which should handle the request - LEAVE EMPTY FOR USING __invoke()')
+                $this->askString('Enter the method, which should handle the request - LEAVE EMPTY FOR USING __invoke()'),
             );
     }
 

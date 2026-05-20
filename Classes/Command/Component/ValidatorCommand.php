@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Maispace\MaiMake\Command\Component;
 
@@ -27,14 +27,14 @@ class ValidatorCommand extends SimpleComponentCommand
                 $this->askString(
                     'Enter the name of the validator (e.g. "NotEmptyValidator")',
                     null,
-                    [$this, 'answerRequired']
-                )
+                    [$this, 'answerRequired'],
+                ),
             )
             ->setDirectory(
                 $this->askString(
                     'Enter the directory, the validator should be placed in',
-                    $this->getProposalFromEnvironment('VALIDATOR_DIR', 'Validator')
-                )
+                    $this->getProposalFromEnvironment('VALIDATOR_DIR', 'Validator'),
+                ),
             );
     }
 

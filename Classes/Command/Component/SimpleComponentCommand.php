@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Maispace\MaiMake\Command\Component;
 
@@ -85,7 +85,7 @@ abstract class SimpleComponentCommand extends AbstractCommand
             return 0;
         }
 
-        if (!GeneralUtility::writeFile($componentFile, (string)$component)) {
+        if (!GeneralUtility::writeFile($componentFile, (string) $component)) {
             $this->io->error('Creating ' . $component->getName() . ' in ' . $componentFile . ' failed.');
 
             return 1;
@@ -112,7 +112,7 @@ abstract class SimpleComponentCommand extends AbstractCommand
     {
         $autoload = $package->getValueFromComposerManifest('autoload');
         $psr4 = is_object($autoload) ? ($autoload->{'psr-4'} ?? []) : [];
-        $firstKey = key(is_array($psr4) ? $psr4 : (array)$psr4);
+        $firstKey = key(is_array($psr4) ? $psr4 : (array) $psr4);
 
         return is_string($firstKey) ? $firstKey : '';
     }
@@ -137,7 +137,7 @@ abstract class SimpleComponentCommand extends AbstractCommand
         $this->serviceConfiguration = new ServiceConfiguration($this->package->getPackagePath());
 
         if (!isset($this->serviceConfiguration->getConfiguration()['services'])) {
-            $basicConfiguration = (bool)$this->io->confirm('Your extension does not yet contain a service configuration. May we add one for you?', true);
+            $basicConfiguration = (bool) $this->io->confirm('Your extension does not yet contain a service configuration. May we add one for you?', true);
             if (!$basicConfiguration) {
                 throw new \RuntimeException('Can not add component without a service configuration.', 1639664757);
             }
@@ -168,7 +168,7 @@ abstract class SimpleComponentCommand extends AbstractCommand
 
         $configuration['services'] = array_replace_recursive(
             $services,
-            $component->getServiceConfiguration()
+            $component->getServiceConfiguration(),
         );
 
         return $this->serviceConfiguration->setConfiguration($configuration)->write();

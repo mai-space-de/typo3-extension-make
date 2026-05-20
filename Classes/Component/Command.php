@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Maispace\MaiMake\Component;
 
@@ -25,9 +25,9 @@ class Command extends AbstractComponent implements ServiceConfigurationComponent
             str_replace(
                 'command',
                 '',
-                mb_strtolower(preg_replace('/(?<=\\w)([A-Z])/', '-\\1', $this->name) ?? '', 'utf-8')
+                mb_strtolower(preg_replace('/(?<=\\w)([A-Z])/', '-\\1', $this->name) ?? '', 'utf-8'),
             ),
-            '-'
+            '-',
         );
 
         return $extensionPrefix . ':' . $commandName;
@@ -62,7 +62,7 @@ class Command extends AbstractComponent implements ServiceConfigurationComponent
                 'NAMESPACE'   => $this->getNamespace(),
                 'NAME'        => $this->name,
                 'DESCRIPTION' => str_replace('\'', '\\\'', $this->description),
-            ]
+            ],
         );
     }
 

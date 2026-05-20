@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Maispace\MaiMake\Component;
 
@@ -55,7 +55,7 @@ class EventListener extends AbstractComponent implements ServiceConfigurationCom
                 'NAME'      => $this->name,
                 'METHOD'    => $this->methodName ?: '__invoke',
                 'EVENT'     => $this->eventName,
-            ]
+            ],
         );
     }
 

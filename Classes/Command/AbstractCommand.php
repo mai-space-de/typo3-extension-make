@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Maispace\MaiMake\Command;
 
@@ -36,7 +36,7 @@ abstract class AbstractCommand extends Command
 
     public function answerRequired(mixed $answer): string
     {
-        $answer = is_scalar($answer) ? (string)$answer : '';
+        $answer = is_scalar($answer) ? (string) $answer : '';
 
         if (trim($answer) === '') {
             throw new EmptyAnswerException('Answer can not be empty.', 1639664759);

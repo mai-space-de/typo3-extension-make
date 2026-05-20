@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Maispace\MaiMake\Command\Component;
 
@@ -25,7 +25,7 @@ class EnumCommand extends SimpleComponentCommand
         $backingTypeChoice = $this->askChoice(
             'Select the backing type for the enum',
             ['string', 'int', 'none'],
-            $this->getProposalFromEnvironment('ENUM_BACKING_TYPE', 'string')
+            $this->getProposalFromEnvironment('ENUM_BACKING_TYPE', 'string'),
         );
 
         return $enum
@@ -33,14 +33,14 @@ class EnumCommand extends SimpleComponentCommand
                 $this->askString(
                     'Enter the name of the enum (e.g. "Status")',
                     null,
-                    [$this, 'answerRequired']
-                )
+                    [$this, 'answerRequired'],
+                ),
             )
             ->setDirectory(
                 $this->askString(
                     'Enter the directory, the enum should be placed in',
-                    $this->getProposalFromEnvironment('ENUM_DIR', 'Enum')
-                )
+                    $this->getProposalFromEnvironment('ENUM_DIR', 'Enum'),
+                ),
             )
             ->setBackingType($backingTypeChoice === 'none' ? '' : $backingTypeChoice);
     }

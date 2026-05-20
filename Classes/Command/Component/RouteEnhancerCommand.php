@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Maispace\MaiMake\Command\Component;
 
@@ -27,14 +27,14 @@ class RouteEnhancerCommand extends SimpleComponentCommand
                 $this->askString(
                     'Enter the name of the route enhancer (e.g. "BlogRouteEnhancer")',
                     null,
-                    [$this, 'answerRequired']
-                )
+                    [$this, 'answerRequired'],
+                ),
             )
             ->setDirectory(
                 $this->askString(
                     'Enter the directory, the route enhancer should be placed in',
-                    $this->getProposalFromEnvironment('ROUTE_ENHANCER_DIR', 'Routing/Enhancer')
-                )
+                    $this->getProposalFromEnvironment('ROUTE_ENHANCER_DIR', 'Routing/Enhancer'),
+                ),
             );
     }
 

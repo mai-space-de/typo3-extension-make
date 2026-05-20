@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Maispace\MaiMake\Command\Component;
 
@@ -27,14 +27,14 @@ class ModelCommand extends SimpleComponentCommand
                 $this->askString(
                     'Enter the name of the model (e.g. "BlogPost")',
                     null,
-                    [$this, 'answerRequired']
-                )
+                    [$this, 'answerRequired'],
+                ),
             )
             ->setDirectory(
                 $this->askString(
                     'Enter the directory, the model should be placed in',
-                    $this->getProposalFromEnvironment('MODEL_DIR', 'Domain/Model')
-                )
+                    $this->getProposalFromEnvironment('MODEL_DIR', 'Domain/Model'),
+                ),
             );
     }
 

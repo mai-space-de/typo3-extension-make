@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Maispace\MaiMake\Command\Component;
 
@@ -27,14 +27,14 @@ class HookCommand extends SimpleComponentCommand
                 $this->askString(
                     'Enter the name of the hook class (e.g. "PageHook")',
                     null,
-                    [$this, 'answerRequired']
-                )
+                    [$this, 'answerRequired'],
+                ),
             )
             ->setDirectory(
                 $this->askString(
                     'Enter the directory, the hook class should be placed in',
-                    $this->getProposalFromEnvironment('HOOK_DIR', 'Hook')
-                )
+                    $this->getProposalFromEnvironment('HOOK_DIR', 'Hook'),
+                ),
             );
     }
 

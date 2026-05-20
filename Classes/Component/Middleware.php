@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Maispace\MaiMake\Component;
 
@@ -69,7 +69,7 @@ class Middleware extends AbstractComponent implements ArrayConfigurationComponen
             [
                 'NAMESPACE' => $this->getNamespace(),
                 'NAME'      => $this->name,
-            ]
+            ],
         );
     }
 

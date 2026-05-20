@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Maispace\MaiMake\Component;
 
@@ -54,16 +54,16 @@ abstract class AbstractComponent implements ComponentInterface
                 preg_replace(
                     '/(?<=\\w)([A-Z])/',
                     '-\\1',
-                    trim(str_replace('\\', '/', $this->psr4Prefix), '/')
+                    trim(str_replace('\\', '/', $this->psr4Prefix), '/'),
                 ) ?? '',
-                '-'
+                '-',
             ),
-            'utf-8'
+            'utf-8',
         );
 
         $identifier = mb_strtolower(
             trim(preg_replace('/(?<=\\w)([A-Z])/', '-\\1', $this->name) ?? '', '-'),
-            'utf-8'
+            'utf-8',
         );
 
         return $packagePrefix . '/' . $identifier;
@@ -81,12 +81,12 @@ abstract class AbstractComponent implements ComponentInterface
     {
         $template = file_get_contents(__DIR__ . '/../../Resources/Private/CodeTemplates/' . $fileName);
 
-        return (string)preg_replace_callback(
+        return (string) preg_replace_callback(
             '/\{\{([A-Z_]*)\}\}/',
             static function (array $result) use ($replace): string {
                 return $replace[$result[1]] ?? $result[0];
             },
-            $template !== false ? $template : ''
+            $template !== false ? $template : '',
         );
     }
 }

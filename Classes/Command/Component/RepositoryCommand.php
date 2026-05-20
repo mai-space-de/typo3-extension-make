@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Maispace\MaiMake\Command\Component;
 
@@ -27,14 +27,14 @@ class RepositoryCommand extends SimpleComponentCommand
                 $this->askString(
                     'Enter the name of the repository (e.g. "BlogPostRepository")',
                     null,
-                    [$this, 'answerRequired']
-                )
+                    [$this, 'answerRequired'],
+                ),
             )
             ->setDirectory(
                 $this->askString(
                     'Enter the directory, the repository should be placed in',
-                    $this->getProposalFromEnvironment('REPOSITORY_DIR', 'Domain/Repository')
-                )
+                    $this->getProposalFromEnvironment('REPOSITORY_DIR', 'Domain/Repository'),
+                ),
             );
     }
 

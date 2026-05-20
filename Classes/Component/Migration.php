@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Maispace\MaiMake\Component;
 
@@ -31,7 +31,7 @@ class Migration extends AbstractComponent
                 'NAMESPACE'   => $this->getNamespace(),
                 'NAME'        => $this->name,
                 'DESCRIPTION' => str_replace('\'', '\\\'', $this->description),
-            ]
+            ],
         );
     }
 }

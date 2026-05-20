@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Maispace\MaiMake\Command\Component;
 
@@ -34,14 +34,14 @@ class ServiceCommand extends SimpleComponentCommand
                 $this->askString(
                     'Enter the name of the service (e.g. "UserService")',
                     null,
-                    [$this, 'answerRequired']
-                )
+                    [$this, 'answerRequired'],
+                ),
             )
             ->setDirectory(
                 $this->askString(
                     'Enter the directory, the service should be placed in',
-                    $this->getProposalFromEnvironment('SERVICE_DIR', 'Service')
-                )
+                    $this->getProposalFromEnvironment('SERVICE_DIR', 'Service'),
+                ),
             );
     }
 

@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Maispace\MaiMake\Command\Component;
 
@@ -37,41 +37,41 @@ class MiddlewareCommand extends SimpleComponentCommand
                 $this->askString(
                     'Enter the name of the middleware (e.g. "PostProcessContent")',
                     null,
-                    [$this, 'answerRequired']
-                )
+                    [$this, 'answerRequired'],
+                ),
             )
             ->setDirectory(
                 $this->askString(
                     'Enter the directory, the middleware should be placed in',
-                    $this->getProposalFromEnvironment('MIDDLEWARE_DIR', 'Middleware')
-                )
+                    $this->getProposalFromEnvironment('MIDDLEWARE_DIR', 'Middleware'),
+                ),
             )
             ->setIdentifier(
                 $this->askString(
                     'Enter an identifier for the middleware',
-                    $middleware->getIdentifierProposal($this->getProposalFromEnvironment('MIDDLEWARE_IDENTIFIER_PREFIX'))
-                )
+                    $middleware->getIdentifierProposal($this->getProposalFromEnvironment('MIDDLEWARE_IDENTIFIER_PREFIX')),
+                ),
             )
             ->setType(
                 $this->askChoice(
                     'Choose the type (context) for the middleware',
                     ['frontend', 'backend'],
-                    $this->getProposalFromEnvironment('MIDDLEWARE_TYPE', 'frontend')
-                )
+                    $this->getProposalFromEnvironment('MIDDLEWARE_TYPE', 'frontend'),
+                ),
             )
             ->setBefore(
                 GeneralUtility::trimExplode(
                     ',',
                     $this->askString('Enter a comma separated list of identifiers the new middleware should be executed beforehand'),
-                    true
-                )
+                    true,
+                ),
             )
             ->setAfter(
                 GeneralUtility::trimExplode(
                     ',',
                     $this->askString('Enter a comma separated list of identifiers after which the new middleware should be executed'),
-                    true
-                )
+                    true,
+                ),
             );
     }
 

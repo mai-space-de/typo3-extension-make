@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Maispace\MaiMake\Command\Component;
 
@@ -36,30 +36,30 @@ class CommandCommand extends SimpleComponentCommand
                 $this->askString(
                     'Enter the name of the command (e.g. "AwesomeCommand")?',
                     null,
-                    [$this, 'answerRequired']
-                )
+                    [$this, 'answerRequired'],
+                ),
             )
             ->setDirectory(
                 $this->askString(
                     'Enter the directory, the command should be placed in',
-                    $this->getProposalFromEnvironment('COMMAND_DIR', 'Command')
-                )
+                    $this->getProposalFromEnvironment('COMMAND_DIR', 'Command'),
+                ),
             )
             ->setCommandName(
                 $this->askString(
                     'Enter the command name to execute on CLI',
-                    $command->getCommandNameProposal($this->getProposalFromEnvironment('COMMAND_NAME_PREFIX', $this->extensionKey))
-                )
+                    $command->getCommandNameProposal($this->getProposalFromEnvironment('COMMAND_NAME_PREFIX', $this->extensionKey)),
+                ),
             )
             ->setDescription(
                 $this->askString(
                     'Enter a short description for the command',
                     null,
-                    [$this, 'answerRequired']
-                )
+                    [$this, 'answerRequired'],
+                ),
             )
             ->setSchedulable(
-                (bool)$this->io->confirm('Should the command be schedulable?', false)
+                (bool) $this->io->confirm('Should the command be schedulable?', false),
             );
     }
 

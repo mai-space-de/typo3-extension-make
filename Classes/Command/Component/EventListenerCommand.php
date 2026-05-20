@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Maispace\MaiMake\Command\Component;
 
@@ -36,29 +36,29 @@ class EventListenerCommand extends SimpleComponentCommand
                 $this->askString(
                     'Enter the event to listen for? - Use the FQN',
                     null,
-                    [$this, 'answerRequired']
-                )
+                    [$this, 'answerRequired'],
+                ),
             )
             ->setName(
                 $this->askString(
                     'Enter the name of the listener (e.g. "AwesomeEventListener")',
-                    $eventListener->getNameProposal()
-                )
+                    $eventListener->getNameProposal(),
+                ),
             )
             ->setDirectory(
                 $this->askString(
                     'Enter the directory, the listener should be placed in',
-                    $this->getProposalFromEnvironment('EVENT_LISTENER_DIR', 'EventListener')
-                )
+                    $this->getProposalFromEnvironment('EVENT_LISTENER_DIR', 'EventListener'),
+                ),
             )
             ->setIdentifier(
                 $this->askString(
                     'Enter an identifier for the listener',
-                    $eventListener->getIdentifierProposal($this->getProposalFromEnvironment('EVENT_LISTENER_IDENTIFIER_PREFIX'))
-                )
+                    $eventListener->getIdentifierProposal($this->getProposalFromEnvironment('EVENT_LISTENER_IDENTIFIER_PREFIX')),
+                ),
             )
             ->setMethodName(
-                $this->askString('Enter the method, which should receive the event - LEAVE EMPTY FOR USING __invoke()')
+                $this->askString('Enter the method, which should receive the event - LEAVE EMPTY FOR USING __invoke()'),
             );
     }
 

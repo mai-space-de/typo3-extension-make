@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Maispace\MaiMake\Command\Component;
 
@@ -27,14 +27,14 @@ class DtoCommand extends SimpleComponentCommand
                 $this->askString(
                     'Enter the name of the DTO (e.g. "UserDto")',
                     null,
-                    [$this, 'answerRequired']
-                )
+                    [$this, 'answerRequired'],
+                ),
             )
             ->setDirectory(
                 $this->askString(
                     'Enter the directory, the DTO should be placed in',
-                    $this->getProposalFromEnvironment('DTO_DIR', 'Dto')
-                )
+                    $this->getProposalFromEnvironment('DTO_DIR', 'Dto'),
+                ),
             );
     }
 
