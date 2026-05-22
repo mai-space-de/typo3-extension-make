@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Maispace\MaiMake\Tests\Unit\Component;
 
 use Maispace\MaiMake\Component\Middleware;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 
 class MiddlewareTest extends TestCase
@@ -23,9 +24,7 @@ class MiddlewareTest extends TestCase
         $this->subject->setType('frontend');
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function generateMiddlewareFileContentTest(): void
     {
         $expectedFileContent = <<<'EOF'
@@ -54,9 +53,7 @@ class MiddlewareTest extends TestCase
         self::assertEquals($expectedFileContent, $this->subject->__toString());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function generateMiddlewareConfiguration(): void
     {
         $expected = [
@@ -68,9 +65,7 @@ class MiddlewareTest extends TestCase
         self::assertEquals($expected, $this->subject->getArrayConfiguration());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function middlewareWithoutBeforeAfterOmitsThoseKeys(): void
     {
         $middleware = new Middleware('Vendor\\Extension\\');

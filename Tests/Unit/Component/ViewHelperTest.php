@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Maispace\MaiMake\Tests\Unit\Component;
 
 use Maispace\MaiMake\Component\ViewHelper;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 
 class ViewHelperTest extends TestCase
@@ -20,9 +21,7 @@ class ViewHelperTest extends TestCase
         $this->subject->setDirectory('ViewHelpers');
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function generateViewHelperFileContentTest(): void
     {
         $content = $this->subject->__toString();
@@ -34,9 +33,7 @@ class ViewHelperTest extends TestCase
         self::assertStringContainsString('RenderingContextInterface $renderingContext', $content);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function viewHelperClassNameIsCorrect(): void
     {
         self::assertEquals('Vendor\\Extension\\ViewHelpers\\FormatDateViewHelper', $this->subject->getClassName());

@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace Maispace\MaiMake\Tests\Unit\Component;
 
 use Maispace\MaiMake\Component\UpgradeWizard;
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 
 class UpgradeWizardTest extends TestCase
@@ -22,9 +24,7 @@ class UpgradeWizardTest extends TestCase
         $this->subject->setTitle('Migrate page slugs');
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function generateUpgradeWizardFileContentTest(): void
     {
         $content = $this->subject->__toString();
@@ -37,17 +37,13 @@ class UpgradeWizardTest extends TestCase
         self::assertStringContainsString('public function updateNecessary(): bool', $content);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function upgradeWizardClassNameIsCorrect(): void
     {
         self::assertEquals('Vendor\\Extension\\UpgradeWizard\\MigrateSlugUpgradeWizard', $this->subject->getClassName());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function serviceConfigurationContainsUpgradeWizardTag(): void
     {
         $config = $this->subject->getServiceConfiguration();
@@ -56,11 +52,8 @@ class UpgradeWizardTest extends TestCase
         self::assertEquals('typo3.upgrade_wizard', $config['Vendor\\Extension\\UpgradeWizard\\MigrateSlugUpgradeWizard']['tags'][0]['name']);
     }
 
-    /**
-     * @test
-     *
-     * @dataProvider identifierProposalDataProvider
-     */
+    #[Test]
+    #[DataProvider('identifierProposalDataProvider')]
     public function identifierProposalIsGeneratedCorrectly(string $name, string $extensionKey, string $expectedIdentifier): void
     {
         $wizard = new UpgradeWizard('Vendor\\Extension\\');

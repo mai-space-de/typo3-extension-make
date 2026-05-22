@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Maispace\MaiMake\Tests\Unit\Component;
 
 use Maispace\MaiMake\Component\ExceptionComponent;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 
 class ExceptionComponentTest extends TestCase
@@ -20,9 +21,7 @@ class ExceptionComponentTest extends TestCase
         $this->subject->setDirectory('Exception');
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function generateExceptionFileContentTest(): void
     {
         $expectedFileContent = <<<'EOF'
@@ -41,9 +40,7 @@ class ExceptionComponentTest extends TestCase
         self::assertEquals($expectedFileContent, $this->subject->__toString());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function customParentClassIsApplied(): void
     {
         $this->subject->setParentClass('\\LogicException');
@@ -52,18 +49,14 @@ class ExceptionComponentTest extends TestCase
         self::assertStringContainsString('extends \\LogicException', $content);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function parentClassLeadingBackslashIsNormalized(): void
     {
         $this->subject->setParentClass('RuntimeException');
         self::assertEquals('\\RuntimeException', $this->subject->getParentClass());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function exceptionClassNameIsCorrect(): void
     {
         self::assertEquals('Vendor\\Extension\\Exception\\InvalidArgumentException', $this->subject->getClassName());

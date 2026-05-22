@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Maispace\MaiMake\Tests\Unit\Component;
 
 use Maispace\MaiMake\Component\Model;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 
 class ModelTest extends TestCase
@@ -20,9 +21,7 @@ class ModelTest extends TestCase
         $this->subject->setDirectory('Domain/Model');
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function generateModelFileContentTest(): void
     {
         $expectedFileContent = <<<'EOF'
@@ -44,9 +43,7 @@ class ModelTest extends TestCase
         self::assertEquals($expectedFileContent, $this->subject->__toString());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function modelClassNameIsCorrect(): void
     {
         self::assertEquals('Vendor\\Extension\\Domain\\Model\\BlogPost', $this->subject->getClassName());

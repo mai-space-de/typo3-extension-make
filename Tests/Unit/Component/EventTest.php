@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Maispace\MaiMake\Tests\Unit\Component;
 
 use Maispace\MaiMake\Component\Event;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 
 class EventTest extends TestCase
@@ -20,9 +21,7 @@ class EventTest extends TestCase
         $this->subject->setDirectory('Event');
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function generateEventFileContentTest(): void
     {
         $expectedFileContent = <<<'EOF'
@@ -42,9 +41,7 @@ class EventTest extends TestCase
         self::assertEquals($expectedFileContent, $this->subject->__toString());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function eventClassNameIsCorrect(): void
     {
         self::assertEquals('Vendor\\Extension\\Event\\UserRegisteredEvent', $this->subject->getClassName());

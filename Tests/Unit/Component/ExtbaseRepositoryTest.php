@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Maispace\MaiMake\Tests\Unit\Component;
 
 use Maispace\MaiMake\Component\ExtbaseRepository;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 
 class ExtbaseRepositoryTest extends TestCase
@@ -20,9 +21,7 @@ class ExtbaseRepositoryTest extends TestCase
         $this->subject->setDirectory('Domain/Repository');
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function generateRepositoryFileContentTest(): void
     {
         $expectedFileContent = <<<'EOF'
@@ -43,9 +42,7 @@ class ExtbaseRepositoryTest extends TestCase
         self::assertEquals($expectedFileContent, $this->subject->__toString());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function repositoryClassNameIsCorrect(): void
     {
         self::assertEquals('Vendor\\Extension\\Domain\\Repository\\BlogPostRepository', $this->subject->getClassName());

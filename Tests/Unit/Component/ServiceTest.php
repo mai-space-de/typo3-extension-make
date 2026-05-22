@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Maispace\MaiMake\Tests\Unit\Component;
 
 use Maispace\MaiMake\Component\Service;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 
 class ServiceTest extends TestCase
@@ -20,9 +21,7 @@ class ServiceTest extends TestCase
         $this->subject->setDirectory('Service');
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function generateServiceFileContentTest(): void
     {
         $expectedFileContent = <<<'EOF'
@@ -42,9 +41,7 @@ class ServiceTest extends TestCase
         self::assertEquals($expectedFileContent, $this->subject->__toString());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function serviceClassNameIsCorrect(): void
     {
         self::assertEquals('Vendor\\Extension\\Service\\UserService', $this->subject->getClassName());

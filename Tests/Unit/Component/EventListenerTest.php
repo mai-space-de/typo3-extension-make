@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Maispace\MaiMake\Tests\Unit\Component;
 
 use Maispace\MaiMake\Component\EventListener;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 
 class EventListenerTest extends TestCase
@@ -23,9 +24,7 @@ class EventListenerTest extends TestCase
         $this->subject->setMethodName('');
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function generateEventListenerFileContentTest(): void
     {
         $content = $this->subject->__toString();
@@ -36,9 +35,7 @@ class EventListenerTest extends TestCase
         self::assertStringContainsString('\\TYPO3\\CMS\\Core\\Mail\\Event\\AfterMailerSentMessageEvent $event', $content);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function customMethodNameIsUsed(): void
     {
         $this->subject->setMethodName('handle');
@@ -47,9 +44,7 @@ class EventListenerTest extends TestCase
         self::assertStringContainsString('public function handle(', $content);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function serviceConfigurationContainsEventListenerTag(): void
     {
         $config = $this->subject->getServiceConfiguration();
@@ -60,9 +55,7 @@ class EventListenerTest extends TestCase
         self::assertEquals('vendor/extension/after-mailer-sent', $config[$className]['tags'][0]['identifier']);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function serviceConfigurationContainsMethodWhenSet(): void
     {
         $this->subject->setMethodName('handle');
@@ -72,9 +65,7 @@ class EventListenerTest extends TestCase
         self::assertEquals('handle', $config[$className]['tags'][0]['method']);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function nameProposalFromEventName(): void
     {
         self::assertEquals('AfterMailerSentMessageEventListener', $this->subject->getNameProposal());

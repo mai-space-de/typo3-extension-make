@@ -5,15 +5,14 @@ declare(strict_types=1);
 namespace Maispace\MaiMake\Tests\Unit\Component;
 
 use Maispace\MaiMake\Component\AbstractComponent;
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 
 class AbstractComponentTest extends TestCase
 {
-    /**
-     * @test
-     *
-     * @dataProvider psr4PrefixIsSanitizedDataProvider
-     */
+    #[Test]
+    #[DataProvider('psr4PrefixIsSanitizedDataProvider')]
     public function psr4PrefixIsSanitized(string $psr4Prefix): void
     {
         $component = new class ($psr4Prefix) extends AbstractComponent {
@@ -48,11 +47,8 @@ class AbstractComponentTest extends TestCase
         ];
     }
 
-    /**
-     * @test
-     *
-     * @dataProvider nameIsSanitizedDataProvider
-     */
+    #[Test]
+    #[DataProvider('nameIsSanitizedDataProvider')]
     public function nameIsSanitized(string $name): void
     {
         $component = new class ('Vendor/Extension') extends AbstractComponent {
@@ -86,9 +82,7 @@ class AbstractComponentTest extends TestCase
         ];
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function directoryIsSanitized(): void
     {
         $component = new class ('Vendor/Extension') extends AbstractComponent {
@@ -102,11 +96,8 @@ class AbstractComponentTest extends TestCase
         self::assertEquals('Directory/', $component->getDirectory());
     }
 
-    /**
-     * @test
-     *
-     * @dataProvider namespaceIsSanitizedDataProvider
-     */
+    #[Test]
+    #[DataProvider('namespaceIsSanitizedDataProvider')]
     public function namespaceIsSanitized(string $directory, string $expectedNamespace): void
     {
         $component = new class ('Vendor\\Extension\\') extends AbstractComponent {
@@ -145,11 +136,8 @@ class AbstractComponentTest extends TestCase
         ];
     }
 
-    /**
-     * @test
-     *
-     * @dataProvider classNameIsSanitizedDataProvider
-     */
+    #[Test]
+    #[DataProvider('classNameIsSanitizedDataProvider')]
     public function classNameIsSanitized(string $name, string $directory, string $expectedClassName): void
     {
         $component = new class ('Vendor\\Extension\\') extends AbstractComponent {
@@ -184,11 +172,8 @@ class AbstractComponentTest extends TestCase
         ];
     }
 
-    /**
-     * @test
-     *
-     * @dataProvider getIdentifierProposalTestDataProvider
-     */
+    #[Test]
+    #[DataProvider('getIdentifierProposalTestDataProvider')]
     public function getIdentifierProposalTest(
         string $psr4Prefix,
         string $name,
@@ -227,11 +212,8 @@ class AbstractComponentTest extends TestCase
         ];
     }
 
-    /**
-     * @test
-     *
-     * @dataProvider getIdentifierProposalWithStaticPrefixTestDataProvider
-     */
+    #[Test]
+    #[DataProvider('getIdentifierProposalWithStaticPrefixTestDataProvider')]
     public function getIdentifierProposalWithStaticPrefixTest(
         string $psr4Prefix,
         string $name,

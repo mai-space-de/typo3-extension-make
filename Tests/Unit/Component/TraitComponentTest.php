@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Maispace\MaiMake\Tests\Unit\Component;
 
 use Maispace\MaiMake\Component\TraitComponent;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 
 class TraitComponentTest extends TestCase
@@ -20,9 +21,7 @@ class TraitComponentTest extends TestCase
         $this->subject->setDirectory('Trait');
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function generateTraitFileContentTest(): void
     {
         $expectedFileContent = <<<'EOF'
@@ -42,9 +41,7 @@ class TraitComponentTest extends TestCase
         self::assertEquals($expectedFileContent, $this->subject->__toString());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function traitClassNameIsCorrect(): void
     {
         self::assertEquals('Vendor\\Extension\\Trait\\HasTimestampsTrait', $this->subject->getClassName());

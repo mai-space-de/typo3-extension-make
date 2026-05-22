@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Maispace\MaiMake\Tests\Unit\Component;
 
 use Maispace\MaiMake\Component\Hook;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 
 class HookTest extends TestCase
@@ -20,9 +21,7 @@ class HookTest extends TestCase
         $this->subject->setDirectory('Hook');
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function generateHookFileContentTest(): void
     {
         $content = $this->subject->__toString();
@@ -31,9 +30,7 @@ class HookTest extends TestCase
         self::assertStringContainsString('class PageHook', $content);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function hookClassNameIsCorrect(): void
     {
         self::assertEquals('Vendor\\Extension\\Hook\\PageHook', $this->subject->getClassName());

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Maispace\MaiMake\Tests\Unit\Component;
 
 use Maispace\MaiMake\Component\Controller;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 
 class ControllerTest extends TestCase
@@ -21,9 +22,7 @@ class ControllerTest extends TestCase
         $this->subject->setActionName('index');
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function generateControllerFileContentTest(): void
     {
         $expectedFileContent = <<<'EOF'
@@ -50,18 +49,14 @@ class ControllerTest extends TestCase
         self::assertEquals($expectedFileContent, $this->subject->__toString());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function actionNameIsSanitized(): void
     {
         $this->subject->setActionName('listAction');
         self::assertEquals('list', $this->subject->getActionName());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function actionNameWithoutSuffixIsPreserved(): void
     {
         $this->subject->setActionName('show');

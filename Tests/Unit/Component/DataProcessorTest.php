@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Maispace\MaiMake\Tests\Unit\Component;
 
 use Maispace\MaiMake\Component\DataProcessor;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 
 class DataProcessorTest extends TestCase
@@ -20,9 +21,7 @@ class DataProcessorTest extends TestCase
         $this->subject->setDirectory('DataProcessing');
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function generateDataProcessorFileContentTest(): void
     {
         $content = $this->subject->__toString();
@@ -32,9 +31,7 @@ class DataProcessorTest extends TestCase
         self::assertStringContainsString('public function process(', $content);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function dataProcessorClassNameIsCorrect(): void
     {
         self::assertEquals('Vendor\\Extension\\DataProcessing\\MyDataProcessor', $this->subject->getClassName());

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Maispace\MaiMake\Tests\Unit\Component;
 
 use Maispace\MaiMake\Component\Validator;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 
 class ValidatorTest extends TestCase
@@ -20,9 +21,7 @@ class ValidatorTest extends TestCase
         $this->subject->setDirectory('Validator');
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function generateValidatorFileContentTest(): void
     {
         $content = $this->subject->__toString();
@@ -32,9 +31,7 @@ class ValidatorTest extends TestCase
         self::assertStringContainsString('protected function isValid(mixed $value): void', $content);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function validatorClassNameIsCorrect(): void
     {
         self::assertEquals('Vendor\\Extension\\Validator\\NotEmptyValidator', $this->subject->getClassName());

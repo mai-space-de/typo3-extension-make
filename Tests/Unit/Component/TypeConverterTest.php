@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Maispace\MaiMake\Tests\Unit\Component;
 
 use Maispace\MaiMake\Component\TypeConverter;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 
 class TypeConverterTest extends TestCase
@@ -20,9 +21,7 @@ class TypeConverterTest extends TestCase
         $this->subject->setDirectory('Property/TypeConverter');
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function generateTypeConverterFileContentTest(): void
     {
         $content = $this->subject->__toString();
@@ -32,9 +31,7 @@ class TypeConverterTest extends TestCase
         self::assertStringContainsString('public function convertFrom(', $content);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function typeConverterClassNameIsCorrect(): void
     {
         self::assertEquals('Vendor\\Extension\\Property\\TypeConverter\\StringToDateTimeConverter', $this->subject->getClassName());

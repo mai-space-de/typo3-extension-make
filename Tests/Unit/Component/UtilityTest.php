@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Maispace\MaiMake\Tests\Unit\Component;
 
 use Maispace\MaiMake\Component\Utility;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 
 class UtilityTest extends TestCase
@@ -20,9 +21,7 @@ class UtilityTest extends TestCase
         $this->subject->setDirectory('Utility');
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function generateUtilityFileContentTest(): void
     {
         $content = $this->subject->__toString();
@@ -31,9 +30,7 @@ class UtilityTest extends TestCase
         self::assertStringContainsString('class StringUtility', $content);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function utilityClassNameIsCorrect(): void
     {
         self::assertEquals('Vendor\\Extension\\Utility\\StringUtility', $this->subject->getClassName());

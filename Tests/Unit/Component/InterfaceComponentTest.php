@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Maispace\MaiMake\Tests\Unit\Component;
 
 use Maispace\MaiMake\Component\InterfaceComponent;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 
 class InterfaceComponentTest extends TestCase
@@ -20,9 +21,7 @@ class InterfaceComponentTest extends TestCase
         $this->subject->setDirectory('Domain/Repository');
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function generateInterfaceFileContentTest(): void
     {
         $expectedFileContent = <<<'EOF'
@@ -42,9 +41,7 @@ class InterfaceComponentTest extends TestCase
         self::assertEquals($expectedFileContent, $this->subject->__toString());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function interfaceClassNameIsCorrect(): void
     {
         self::assertEquals('Vendor\\Extension\\Domain\\Repository\\UserRepositoryInterface', $this->subject->getClassName());

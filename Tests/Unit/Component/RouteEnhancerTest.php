@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Maispace\MaiMake\Tests\Unit\Component;
 
 use Maispace\MaiMake\Component\RouteEnhancer;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 
 class RouteEnhancerTest extends TestCase
@@ -20,9 +21,7 @@ class RouteEnhancerTest extends TestCase
         $this->subject->setDirectory('Routing/Enhancer');
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function generateRouteEnhancerFileContentTest(): void
     {
         $content = $this->subject->__toString();
@@ -33,9 +32,7 @@ class RouteEnhancerTest extends TestCase
         self::assertStringContainsString('public function enhanceForGeneration(RouteCollection $collection, array $originalParameters): void', $content);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function routeEnhancerClassNameIsCorrect(): void
     {
         self::assertEquals('Vendor\\Extension\\Routing\\Enhancer\\BlogRouteEnhancer', $this->subject->getClassName());

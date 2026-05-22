@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Maispace\MaiMake\Tests\Unit\Component;
 
 use Maispace\MaiMake\Component\Dto;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 
 class DtoTest extends TestCase
@@ -20,9 +21,7 @@ class DtoTest extends TestCase
         $this->subject->setDirectory('Dto');
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function generateDtoFileContentTest(): void
     {
         $content = $this->subject->__toString();
@@ -31,9 +30,7 @@ class DtoTest extends TestCase
         self::assertStringContainsString('final class UserDto', $content);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function dtoClassNameIsCorrect(): void
     {
         self::assertEquals('Vendor\\Extension\\Dto\\UserDto', $this->subject->getClassName());

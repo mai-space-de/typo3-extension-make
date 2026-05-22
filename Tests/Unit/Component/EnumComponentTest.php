@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Maispace\MaiMake\Tests\Unit\Component;
 
 use Maispace\MaiMake\Component\EnumComponent;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 
 class EnumComponentTest extends TestCase
@@ -21,9 +22,7 @@ class EnumComponentTest extends TestCase
         $this->subject->setBackingType('string');
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function generateStringBackedEnumFileContentTest(): void
     {
         $content = $this->subject->__toString();
@@ -32,9 +31,7 @@ class EnumComponentTest extends TestCase
         self::assertStringContainsString('enum Status: string', $content);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function generateIntBackedEnumFileContentTest(): void
     {
         $this->subject->setBackingType('int');
@@ -43,9 +40,7 @@ class EnumComponentTest extends TestCase
         self::assertStringContainsString('enum Status: int', $content);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function generatePureEnumFileContentTest(): void
     {
         $this->subject->setBackingType('');
@@ -55,17 +50,13 @@ class EnumComponentTest extends TestCase
         self::assertStringNotContainsString('enum Status:', $content);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function enumClassNameIsCorrect(): void
     {
         self::assertEquals('Vendor\\Extension\\Enum\\Status', $this->subject->getClassName());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function backingTypeIsStored(): void
     {
         self::assertEquals('string', $this->subject->getBackingType());

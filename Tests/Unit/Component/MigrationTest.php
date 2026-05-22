@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Maispace\MaiMake\Tests\Unit\Component;
 
 use Maispace\MaiMake\Component\Migration;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 
 class MigrationTest extends TestCase
@@ -21,9 +22,7 @@ class MigrationTest extends TestCase
         $this->subject->setDescription('Migrate user data to new format');
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function generateMigrationFileContentTest(): void
     {
         $content = $this->subject->__toString();
@@ -34,17 +33,13 @@ class MigrationTest extends TestCase
         self::assertStringContainsString('public function migrate(): void', $content);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function migrationClassNameIsCorrect(): void
     {
         self::assertEquals('Vendor\\Extension\\Migration\\MigrateUserDataMigration', $this->subject->getClassName());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function descriptionIsStored(): void
     {
         self::assertEquals('Migrate user data to new format', $this->subject->getDescription());

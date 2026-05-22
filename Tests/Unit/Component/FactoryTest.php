@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Maispace\MaiMake\Tests\Unit\Component;
 
 use Maispace\MaiMake\Component\Factory;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 
 class FactoryTest extends TestCase
@@ -20,9 +21,7 @@ class FactoryTest extends TestCase
         $this->subject->setDirectory('Factory');
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function generateFactoryFileContentTest(): void
     {
         $content = $this->subject->__toString();
@@ -31,9 +30,7 @@ class FactoryTest extends TestCase
         self::assertStringContainsString('class UserFactory', $content);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function factoryClassNameIsCorrect(): void
     {
         self::assertEquals('Vendor\\Extension\\Factory\\UserFactory', $this->subject->getClassName());
